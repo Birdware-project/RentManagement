@@ -32,10 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.user_login = new System.Windows.Forms.TextBox();
-            this.password_user = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.LB_username = new System.Windows.Forms.TextBox();
+            this.LB_password = new System.Windows.Forms.TextBox();
+            this.btn_login = new System.Windows.Forms.Button();
+            this.btn_createAccount = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -75,54 +75,54 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Password :";
             // 
-            // user_login
+            // LB_username
             // 
-            this.user_login.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.user_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.user_login.Location = new System.Drawing.Point(396, 201);
-            this.user_login.Multiline = true;
-            this.user_login.Name = "user_login";
-            this.user_login.Size = new System.Drawing.Size(443, 69);
-            this.user_login.TabIndex = 3;
+            this.LB_username.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LB_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_username.Location = new System.Drawing.Point(396, 201);
+            this.LB_username.Multiline = true;
+            this.LB_username.Name = "LB_username";
+            this.LB_username.Size = new System.Drawing.Size(443, 69);
+            this.LB_username.TabIndex = 3;
             // 
-            // password_user
+            // LB_password
             // 
-            this.password_user.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.password_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password_user.Location = new System.Drawing.Point(396, 347);
-            this.password_user.Multiline = true;
-            this.password_user.Name = "password_user";
-            this.password_user.PasswordChar = '*';
-            this.password_user.Size = new System.Drawing.Size(443, 69);
-            this.password_user.TabIndex = 4;
+            this.LB_password.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LB_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_password.Location = new System.Drawing.Point(396, 347);
+            this.LB_password.Multiline = true;
+            this.LB_password.Name = "LB_password";
+            this.LB_password.PasswordChar = '*';
+            this.LB_password.Size = new System.Drawing.Size(443, 69);
+            this.LB_password.TabIndex = 4;
             // 
-            // button1
+            // btn_login
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackColor = System.Drawing.Color.Blue;
-            this.button1.Font = new System.Drawing.Font("KhmerDLStation TNRB", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(291, 460);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 73);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_login.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_login.BackColor = System.Drawing.Color.Blue;
+            this.btn_login.Font = new System.Drawing.Font("KhmerDLStation TNRB", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_login.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_login.Location = new System.Drawing.Point(291, 460);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(192, 73);
+            this.btn_login.TabIndex = 5;
+            this.btn_login.Text = "Login";
+            this.btn_login.UseVisualStyleBackColor = false;
+            this.btn_login.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_createAccount
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.BackColor = System.Drawing.Color.Blue;
-            this.button2.Font = new System.Drawing.Font("KhmerDLStation TNRB", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(489, 460);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(370, 73);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Create Account";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_createAccount.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_createAccount.BackColor = System.Drawing.Color.Blue;
+            this.btn_createAccount.Font = new System.Drawing.Font("KhmerDLStation TNRB", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_createAccount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_createAccount.Location = new System.Drawing.Point(489, 460);
+            this.btn_createAccount.Name = "btn_createAccount";
+            this.btn_createAccount.Size = new System.Drawing.Size(370, 73);
+            this.btn_createAccount.TabIndex = 6;
+            this.btn_createAccount.Text = "Create Account";
+            this.btn_createAccount.UseVisualStyleBackColor = false;
+            this.btn_createAccount.Click += new System.EventHandler(this.button2_Click);
             // 
             // timer1
             // 
@@ -134,10 +134,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(969, 639);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.password_user);
-            this.Controls.Add(this.user_login);
+            this.Controls.Add(this.btn_createAccount);
+            this.Controls.Add(this.btn_login);
+            this.Controls.Add(this.LB_password);
+            this.Controls.Add(this.LB_username);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -155,10 +155,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox user_login;
-        private System.Windows.Forms.TextBox password_user;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox LB_username;
+        private System.Windows.Forms.TextBox LB_password;
+        private System.Windows.Forms.Button btn_login;
+        private System.Windows.Forms.Button btn_createAccount;
         private System.Windows.Forms.Timer timer1;
     }
 }

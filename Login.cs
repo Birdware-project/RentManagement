@@ -13,12 +13,13 @@ namespace moneyhome
 {
     public partial class Login : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True");
-        string connectionString = @"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True";
-        SqlCommand myhome;
+        string connectionString; 
+        
+        SqlCommand cmd;
         SqlConnection cnn;
-        public Login()
+        public Login(string connectionSource)
         {
+            connectionString = connectionSource;
             InitializeComponent();
             timer1.Start();
         }
@@ -27,15 +28,15 @@ namespace moneyhome
         {
             string _userID;
             cnn = new SqlConnection(connectionString);
-            myhome = new SqlCommand();
-            myhome.CommandText = "select * from Tb_User where User_name=@username";
-            myhome.Parameters.Add("@username", SqlDbType.VarChar).Value = this.user_login.Text;
-            myhome.Connection = cnn;
+            cmd = new SqlCommand();
+            cmd.CommandText = "select * from Tb_User where User_name=@username";
+            cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = this.LB_username.Text;
+            cmd.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
             try
             {
-                kd = myhome.ExecuteReader();
+                kd = cmd.ExecuteReader();
                 if (!kd.HasRows)
                 {
                     MessageBox.Show("Incorrect User  Login !");
@@ -46,11 +47,10 @@ namespace moneyhome
                     var _username = kd["User_name"].ToString();
                     var _password = kd["User_password"].ToString();
 
-                    if (this.user_login.Text == _username && this.password_user.Text == _password)
+                    if (this.LB_username.Text == _username && this.LB_password.Text == _password)
                     {
-                        this.Hide();
-                        Rent mm = new Rent(_userID);
-                        
+                        this.Close();
+                        Rent mm = new Rent(_userID,connectionString);
                         mm.Show();
                     }
 
@@ -68,7 +68,6 @@ namespace moneyhome
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
                 this.Hide();
                 user_admin kk = new user_admin();
                 kk.Show();

@@ -38,8 +38,7 @@ namespace moneyhome
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Rent kk = new Rent("12");
-            kk.Show();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

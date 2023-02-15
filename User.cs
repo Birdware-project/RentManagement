@@ -27,9 +27,9 @@ namespace moneyhome
 
         private void button6_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Login kk = new Login();
-            kk.Show();
+            this.Close();
+            //Login kk = new Login();
+            //kk.Show();
         }
 
         private void bt_insert_Click(object sender, EventArgs e)

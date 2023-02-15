@@ -12,9 +12,8 @@ namespace moneyhome
 {
     public partial class Rent : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True");
-        string connectionString = @"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True";
-        SqlCommand myhome;
+        string connectionString;
+        SqlCommand cmd;
         SqlConnection cnn;
         SqlDataAdapter adapter;
         SqlDataAdapter adapter2;
@@ -22,9 +21,9 @@ namespace moneyhome
 
         private int _userID;
 
-        public Rent(string UserID)
+        public Rent(string UserID,string connectionSource)
         {
-            
+            connectionString= connectionSource;
             InitializeComponent();
             showData_customer();
             showData_Room();
@@ -90,7 +89,7 @@ namespace moneyhome
 
             }
             cnn = new SqlConnection(connectionString);
-            myhome = new SqlCommand();
+            cmd = new SqlCommand();
             var _trash = 0;
             var _vehicle = 0;
             var _roomate = "";
@@ -108,18 +107,18 @@ namespace moneyhome
                 _roomate += list.Items[x] + ",";
                 x++;
             }
-            myhome.CommandText = "insert into Tb_menu" +
+            cmd.CommandText = "insert into Tb_menu" +
                 "(Room_Name,Room_Money,Trash_service,Vehicle_Space,Roomate,User_ID)values(@param2,@param3,@param5,@param6,@param7,@UserID)";
-            
-            myhome.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = name_room.Text;
-            myhome.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = money_room.Text;
-            myhome.Parameters.Add("@param5", SqlDbType.Int).Value = _trash;
-            myhome.Parameters.Add("@param6", SqlDbType.Int).Value = _vehicle;
-            myhome.Parameters.Add("@param7", SqlDbType.VarChar,250).Value = _roomate;
-            myhome.Parameters.Add("@UserID", SqlDbType.Int).Value = _userID;
+
+            cmd.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = name_room.Text;
+            cmd.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = money_room.Text;
+            cmd.Parameters.Add("@param5", SqlDbType.Int).Value = _trash;
+            cmd.Parameters.Add("@param6", SqlDbType.Int).Value = _vehicle;
+            cmd.Parameters.Add("@param7", SqlDbType.VarChar,250).Value = _roomate;
+            cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = _userID;
             cnn.Open();
-            myhome.Connection = cnn;
-            myhome.ExecuteNonQuery();
+            cmd.Connection = cnn;
+            cmd.ExecuteNonQuery();
             cnn.Close();
             id_room.Text = "";
             name_room.Text = "";
@@ -158,15 +157,15 @@ namespace moneyhome
         private void bt_search_Click(object sender, EventArgs e)
         {
             cnn = new SqlConnection(connectionString);
-            myhome = new SqlCommand();
-            myhome.CommandText = "select * from Tb_menu where Room_ID=@ID";
-            myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.filter_room.Text;
-            myhome.Connection = cnn;
+            cmd = new SqlCommand();
+            cmd.CommandText = "select * from Tb_menu where Room_ID=@ID";
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.filter_room.Text;
+            cmd.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
             try
             {
-                kd = myhome.ExecuteReader();
+                kd = cmd.ExecuteReader();
                 while (kd.Read())
                 {
                     this.id_room.Text = kd["Room_ID"].ToString();
@@ -207,7 +206,7 @@ namespace moneyhome
             var _trash = 0;
             var _vehicle = 0;
             var _roomate = "";
-            myhome = new SqlCommand();
+            cmd = new SqlCommand();
             if (check_trash.Checked)
             {
                 _trash = 1;
@@ -222,16 +221,16 @@ namespace moneyhome
                 _roomate += list.Items[x] + ",";
                 x++;
             }
-            myhome.CommandText = "update Tb_menu set Room_Name=@param2,Room_Money=@param3,Trash_Service=@param5,Vehicle_Space=@param6,Roomate=@param7 where Room_ID=@param1";
-            myhome.Parameters.Add("@param1", SqlDbType.Int).Value = id_room.Text;
-            myhome.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = name_room.Text;
-            myhome.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = money_room.Text;
-            myhome.Parameters.Add("@param5", SqlDbType.Int).Value = _trash;
-            myhome.Parameters.Add("@param6", SqlDbType.Int).Value = _vehicle;
-            myhome.Parameters.Add("@param7", SqlDbType.VarChar,250).Value = _roomate;
+            cmd.CommandText = "update Tb_menu set Room_Name=@param2,Room_Money=@param3,Trash_Service=@param5,Vehicle_Space=@param6,Roomate=@param7 where Room_ID=@param1";
+            cmd.Parameters.Add("@param1", SqlDbType.Int).Value = id_room.Text;
+            cmd.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = name_room.Text;
+            cmd.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = money_room.Text;
+            cmd.Parameters.Add("@param5", SqlDbType.Int).Value = _trash;
+            cmd.Parameters.Add("@param6", SqlDbType.Int).Value = _vehicle;
+            cmd.Parameters.Add("@param7", SqlDbType.VarChar,250).Value = _roomate;
             cnn.Open();
-            myhome.Connection = cnn;
-            myhome.ExecuteNonQuery();
+            cmd.Connection = cnn;
+            cmd.ExecuteNonQuery();
             cnn.Close();
             MessageBox.Show("Date Update Success!");
             showData_Room();

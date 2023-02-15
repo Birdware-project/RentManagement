@@ -28,9 +28,7 @@ namespace moneyhome
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Rent kk = new Rent("12");
-            kk.Show();
+            this.Close();
         }
 
         private void bt_Insert_Click(object sender, EventArgs e)

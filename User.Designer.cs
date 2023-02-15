@@ -45,7 +45,7 @@
             this.bt_update = new System.Windows.Forms.Button();
             this.bt_delete = new System.Windows.Forms.Button();
             this.dataview_user = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_back = new System.Windows.Forms.Button();
             this.id_user = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataview_user)).BeginInit();
             this.SuspendLayout();
@@ -248,19 +248,19 @@
             this.dataview_user.Size = new System.Drawing.Size(1073, 355);
             this.dataview_user.TabIndex = 21;
             // 
-            // button6
+            // btn_back
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.BackColor = System.Drawing.Color.Red;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Location = new System.Drawing.Point(983, 240);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(102, 42);
-            this.button6.TabIndex = 22;
-            this.button6.Text = "Back";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btn_back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_back.BackColor = System.Drawing.Color.Red;
+            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_back.Location = new System.Drawing.Point(983, 240);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(102, 42);
+            this.btn_back.TabIndex = 22;
+            this.btn_back.Text = "Back";
+            this.btn_back.UseVisualStyleBackColor = false;
+            this.btn_back.Click += new System.EventHandler(this.button6_Click);
             // 
             // id_user
             // 
@@ -281,7 +281,7 @@
             this.ClientSize = new System.Drawing.Size(1097, 655);
             this.ControlBox = false;
             this.Controls.Add(this.id_user);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btn_back);
             this.Controls.Add(this.dataview_user);
             this.Controls.Add(this.bt_delete);
             this.Controls.Add(this.bt_update);
@@ -326,7 +326,7 @@
         private System.Windows.Forms.Button bt_update;
         private System.Windows.Forms.Button bt_delete;
         private System.Windows.Forms.DataGridView dataview_user;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Label id_user;
     }
 }
