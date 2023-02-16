@@ -67,7 +67,7 @@ namespace moneyhome
         private void showData_customer()
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("select cus_ID,Cus_name from Tb_Customer", cnn);
+            adapter = new SqlDataAdapter("select ID,name from Customer", cnn);
             dt = new DataTable();
             adapter.Fill(dt);
             datagv_customer.DataSource = dt;
@@ -77,17 +77,6 @@ namespace moneyhome
 
         private void bt_insert_Click(object sender, EventArgs e)
         {
-            // note duplicate
-            for (int item = 0; item < dataview_Room.Rows.Count - 1; item++)
-            {
-                if (id_room.Text == dataview_Room.Rows[item].Cells[0].Value.ToString())
-                {
-                    MessageBox.Show("ID Duplicate");
-                    cnn.Close();
-                    return;
-                }
-
-            }
             cnn = new SqlConnection(connectionString);
             cmd = new SqlCommand();
             var _trash = 0;
@@ -107,22 +96,22 @@ namespace moneyhome
                 _roomate += list.Items[x] + ",";
                 x++;
             }
-            cmd.CommandText = "insert into Tb_menu" +
-                "(Room_Name,Room_Money,Trash_service,Vehicle_Space,Roomate,User_ID)values(@param2,@param3,@param5,@param6,@param7,@UserID)";
+            cmd.CommandText = "insert into Rent" +
+                "(RoomID,Trash_price,Space_price,Roomate,UserID)" +
+                "values(@RoomID,@trash,@vehicle,@roomate,@UserID)";
 
-            cmd.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = name_room.Text;
-            cmd.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = money_room.Text;
-            cmd.Parameters.Add("@param5", SqlDbType.Int).Value = _trash;
-            cmd.Parameters.Add("@param6", SqlDbType.Int).Value = _vehicle;
-            cmd.Parameters.Add("@param7", SqlDbType.VarChar,250).Value = _roomate;
+            cmd.Parameters.Add("@RoomID", SqlDbType.VarChar, 250).Value = CB_roomID.Text;
+            cmd.Parameters.Add("@trash", SqlDbType.Int).Value = _trash;
+            cmd.Parameters.Add("@vehicle", SqlDbType.Int).Value = _vehicle;
+            cmd.Parameters.Add("@roomate", SqlDbType.VarChar,250).Value = _roomate;
             cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = _userID;
             cnn.Open();
             cmd.Connection = cnn;
             cmd.ExecuteNonQuery();
             cnn.Close();
-            id_room.Text = "";
-            name_room.Text = "";
-            money_room.Text = "";
+            RentID.Text = "";
+            CB_roomID.Text = "";
+            roomPrice.Text = "";
             list.Items.Clear();
             check_trash.Checked = false;
             check_vehicle.Checked = false;
@@ -133,7 +122,7 @@ namespace moneyhome
         private void showData_Room()
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("select * from Tb_menu", cnn);
+            adapter = new SqlDataAdapter("select * from Rent", cnn);
             dt = new DataTable();
             adapter.Fill(dt);
             dataview_Room.DataSource = dt;
@@ -147,7 +136,7 @@ namespace moneyhome
         private void bt_filterroom_Click(object sender, EventArgs e)
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter2 = new SqlDataAdapter("select * from Tb_menu where Room_Name like '%" + filter_room.Text + "%'", cnn);
+            adapter2 = new SqlDataAdapter("select * from Rent where Name like '%" + filter_room.Text + "%'", cnn);
             dt = new DataTable();
             adapter2.Fill(dt);
             dataview_Room.DataSource = dt;
@@ -158,7 +147,7 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             cmd = new SqlCommand();
-            cmd.CommandText = "select * from Tb_menu where Room_ID=@ID";
+            cmd.CommandText = "select * from Rent where ID=@ID";
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.filter_room.Text;
             cmd.Connection = cnn;
             cnn.Open();
@@ -168,12 +157,11 @@ namespace moneyhome
                 kd = cmd.ExecuteReader();
                 while (kd.Read())
                 {
-                    this.id_room.Text = kd["Room_ID"].ToString();
-                    this.name_room.Text = kd["Room_Name"].ToString();
-                    this.money_room.Text = kd["Room_Money"].ToString();
-                    this.check_trash.Checked = Convert.ToInt32(kd["Trash_Service"].ToString()) == 1?true:false;
-                    this.check_vehicle.Checked = Convert.ToInt32(kd["Vehicle_Space"].ToString()) == 1 ? true : false;
-                    this.LB_userID.Text = kd["User_ID"].ToString();
+                    this.RentID.Text = kd["ID"].ToString();
+                    this.CB_roomID.Text = kd["Roomid"].ToString();
+                    this.check_trash.Checked = Convert.ToInt32(kd["Trash_price"].ToString()) == 1?true:false;
+                    this.check_vehicle.Checked = Convert.ToInt32(kd["Space_price"].ToString()) == 1 ? true : false;
+                    this.LB_userID.Text = kd["UserID"].ToString();
 
                     String str = kd["Roomate"].ToString();
                     char[] spearator = { ','};
@@ -221,22 +209,22 @@ namespace moneyhome
                 _roomate += list.Items[x] + ",";
                 x++;
             }
-            cmd.CommandText = "update Tb_menu set Room_Name=@param2,Room_Money=@param3,Trash_Service=@param5,Vehicle_Space=@param6,Roomate=@param7 where Room_ID=@param1";
-            cmd.Parameters.Add("@param1", SqlDbType.Int).Value = id_room.Text;
-            cmd.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = name_room.Text;
-            cmd.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = money_room.Text;
-            cmd.Parameters.Add("@param5", SqlDbType.Int).Value = _trash;
-            cmd.Parameters.Add("@param6", SqlDbType.Int).Value = _vehicle;
-            cmd.Parameters.Add("@param7", SqlDbType.VarChar,250).Value = _roomate;
+            cmd.CommandText = "update Rent set " +
+                "RoomID=@roomID," +
+                "Trash_price=@trash,Space_price=@vehicle,Roomate=@roomate " +
+                "where ID=@RentID";
+            cmd.Parameters.Add("@RentID", SqlDbType.Int).Value = RentID.Text;
+            cmd.Parameters.Add("@trash", SqlDbType.Int).Value = _trash;
+            cmd.Parameters.Add("@vehicle", SqlDbType.Int).Value = _vehicle;
+            cmd.Parameters.Add("@roomate", SqlDbType.VarChar,250).Value = _roomate;
             cnn.Open();
             cmd.Connection = cnn;
             cmd.ExecuteNonQuery();
             cnn.Close();
             MessageBox.Show("Date Update Success!");
             showData_Room();
-            id_room.Text = "";
-            name_room.Text = "";
-            money_room.Text = "";
+            RentID.Text = "";
+            roomPrice.Text = "";
             list.Items.Clear();
             check_trash.Checked = false;
             check_vehicle.Checked = false;

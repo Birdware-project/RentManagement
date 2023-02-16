@@ -27,36 +27,32 @@ namespace moneyhome
             cmd.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
-            try
-            {
-                kd = cmd.ExecuteReader();
-                if (!kd.HasRows)
-                {
-                    MessageBox.Show("Incorrect User  Login !");
-                }
-                while (kd.Read())
-                {
-                    _userID = kd["id"].ToString();
-                    var _username = kd["name"].ToString();
-                    var _password = kd["password"].ToString();
 
-                    if (this.LB_username.Text == _username && this.LB_password.Text == _password)
+            kd = cmd.ExecuteReader();
+            if (!kd.HasRows)
+            {
+                MessageBox.Show("Incorrect User  Login !");
+            }
+            while (kd.Read())
+            {
+                _userID = kd["id"].ToString();
+                var _username = kd["name"].ToString();
+                var _password = kd["password"].ToString();
+
+                if (this.LB_username.Text == _username && this.LB_password.Text == _password)
+                {
+                    this.Hide();
+                    using (Rent mm = new Rent(_userID, connectionString))
                     {
-                        this.Close();
-                        Rent mm = new Rent(_userID, connectionString);
-                        mm.Show();
+                        if (mm.ShowDialog(this) == DialogResult.Cancel)
+                        {
+                            this.Show();
+                        }
                     }
-
                 }
+
             }
-            catch
-            {
-                MessageBox.Show("error user input");
-            }
-            finally
-            {
-                cnn.Close();
-            }
+            cnn.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

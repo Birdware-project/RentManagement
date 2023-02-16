@@ -84,7 +84,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(52, 28);
+            this.label3.Location = new System.Drawing.Point(34, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 36);
             this.label3.TabIndex = 4;
@@ -108,7 +108,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(16, 71);
+            this.label5.Location = new System.Drawing.Point(34, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 36);
             this.label5.TabIndex = 6;
@@ -160,7 +160,7 @@
             // 
             this.TB_filterSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TB_filterSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_filterSearch.Location = new System.Drawing.Point(458, 166);
+            this.TB_filterSearch.Location = new System.Drawing.Point(425, 309);
             this.TB_filterSearch.Multiline = true;
             this.TB_filterSearch.Name = "TB_filterSearch";
             this.TB_filterSearch.Size = new System.Drawing.Size(232, 35);
@@ -172,7 +172,7 @@
             this.bt_filter.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_filter.ForeColor = System.Drawing.Color.White;
-            this.bt_filter.Location = new System.Drawing.Point(458, 118);
+            this.bt_filter.Location = new System.Drawing.Point(425, 261);
             this.bt_filter.Name = "bt_filter";
             this.bt_filter.Size = new System.Drawing.Size(99, 42);
             this.bt_filter.TabIndex = 16;
@@ -186,7 +186,7 @@
             this.bt_insert.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_insert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_insert.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bt_insert.Location = new System.Drawing.Point(35, 166);
+            this.bt_insert.Location = new System.Drawing.Point(34, 121);
             this.bt_insert.Name = "bt_insert";
             this.bt_insert.Size = new System.Drawing.Size(99, 42);
             this.bt_insert.TabIndex = 17;
@@ -200,7 +200,7 @@
             this.bt_search.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_search.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bt_search.Location = new System.Drawing.Point(582, 118);
+            this.bt_search.Location = new System.Drawing.Point(549, 261);
             this.bt_search.Name = "bt_search";
             this.bt_search.Size = new System.Drawing.Size(109, 42);
             this.bt_search.TabIndex = 18;
@@ -214,7 +214,7 @@
             this.bt_update.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_update.ForeColor = System.Drawing.SystemColors.Control;
-            this.bt_update.Location = new System.Drawing.Point(146, 166);
+            this.bt_update.Location = new System.Drawing.Point(146, 121);
             this.bt_update.Name = "bt_update";
             this.bt_update.Size = new System.Drawing.Size(110, 42);
             this.bt_update.TabIndex = 19;
@@ -228,7 +228,7 @@
             this.bt_delete.BackColor = System.Drawing.Color.Red;
             this.bt_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_delete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bt_delete.Location = new System.Drawing.Point(274, 166);
+            this.bt_delete.Location = new System.Drawing.Point(274, 121);
             this.bt_delete.Name = "bt_delete";
             this.bt_delete.Size = new System.Drawing.Size(102, 42);
             this.bt_delete.TabIndex = 20;
@@ -243,11 +243,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataview_user.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataview_user.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataview_user.Location = new System.Drawing.Point(12, 324);
+            this.dataview_user.Location = new System.Drawing.Point(12, 351);
             this.dataview_user.Name = "dataview_user";
             this.dataview_user.RowHeadersWidth = 51;
             this.dataview_user.RowTemplate.Height = 24;
-            this.dataview_user.Size = new System.Drawing.Size(1058, 346);
+            this.dataview_user.Size = new System.Drawing.Size(1058, 319);
             this.dataview_user.TabIndex = 21;
             // 
             // btn_back
@@ -256,7 +256,7 @@
             this.btn_back.BackColor = System.Drawing.Color.Black;
             this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_back.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_back.Location = new System.Drawing.Point(917, 166);
+            this.btn_back.Location = new System.Drawing.Point(968, 303);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(102, 42);
             this.btn_back.TabIndex = 22;
@@ -292,24 +292,20 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.CB_sex);
-            this.panel1.Controls.Add(this.TB_filterSearch);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.btn_back);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.phone_user);
             this.panel1.Controls.Add(this.bt_delete);
             this.panel1.Controls.Add(this.name_user);
             this.panel1.Controls.Add(this.bt_update);
             this.panel1.Controls.Add(this.password_user);
-            this.panel1.Controls.Add(this.bt_search);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.bt_insert);
-            this.panel1.Controls.Add(this.bt_filter);
             this.panel1.Location = new System.Drawing.Point(17, 72);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
-            this.panel1.Size = new System.Drawing.Size(1047, 228);
+            this.panel1.Size = new System.Drawing.Size(1047, 179);
             this.panel1.TabIndex = 25;
             // 
             // CB_sex
@@ -332,11 +328,15 @@
             this.ClientSize = new System.Drawing.Size(1082, 682);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.TB_filterSearch);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.btn_back);
             this.Controls.Add(this.id_user);
             this.Controls.Add(this.dataview_user);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.bt_search);
+            this.Controls.Add(this.bt_filter);
             this.Name = "User";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.dataview_user)).EndInit();
