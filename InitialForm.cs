@@ -17,6 +17,7 @@ namespace moneyhome
         public InitialForm()
         {
             InitializeComponent();
+            btn_close.Enabled = false;
         }
 
         private void btn_next_Click(object sender, EventArgs e)
@@ -42,6 +43,9 @@ namespace moneyhome
                 SetupDatabase(finalConnection);
                 Cursor = Cursors.Arrow;
                 MessageBox.Show("Success Create Database", "Database");
+
+                btn_next.Enabled = false;
+                btn_close.Enabled = true;
             }
             catch(Exception ex)
             {
@@ -94,10 +98,29 @@ namespace moneyhome
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close() ;
+            _feedSeed_admin(connectionString);
         }
         private string _scriptDB()
         {
-            return "CREATE TABLE Users (ID int identity(1,1),Name varchar(255),Sex varchar(255),Phone varchar(255),Password varchar(255));create table Room(ID int identity(1,1),Price varchar(255),Name varchar(255));create table Rent(ID int identity(1,1),RoomID int ,UserID int,Trash_price varchar(255),Space_price varchar(255),Roomate varchar(255));create table invoice (ID int identity(1,1),RoomID int ,UserID int ,edc_waterID int,edc_price varchar(255),water_price varchar(255),space_price varchar(255),trash_price varchar(255),Date date,Room_price varchar(255),Total varchar(255));create table edc_water(ID int identity(1,1),RoomId int ,UserID int ,Date date ,edc_new varchar(255),edc_old varchar(255),water_new varchar(255),water_old varchar(255),);create table customer(ID int identity(1,1),Name varchar(255),Sex varchar(10),Age varchar(255),Phone varchar(255),Image image);";
+            return "CREATE TABLE Users (    ID int identity(1,1),    Name varchar(255),    Sex varchar(255),    Phone varchar(255),    Password varchar(255));create table Room(ID int identity(1,1),Price varchar(255),Name varchar(255));create table Rent(ID int identity(1,1),RoomID int ,UserID int,Trash_price varchar(255),Space_price varchar(255),Roomate varchar(255));create table invoice (ID int identity(1,1),RoomID int ,UserID int ,edc_waterID int,edc_price varchar(255),water_price varchar(255),space_price varchar(255),trash_price varchar(255),Date date,Room_price varchar(255),Total varchar(255));create table edc_water(ID int identity(1,1),RoomId int ,UserID int ,Date date ,edc_new varchar(255),edc_old varchar(255),water_new varchar(255),water_old varchar(255),);create table customer(ID int identity(1,1),Name varchar(255),Sex varchar(10),Age varchar(255),Phone varchar(255),Image image);";   
+            //return "CREATE TABLE Users (ID int identity(1,1),Name varchar(255),Sex varchar(255),Phone varchar(255),Password varchar(255));create table Room(ID int identity(1,1),Price varchar(255),Name varchar(255));create table Rent(ID int identity(1,1),RoomID int ,UserID int,Trash_price varchar(255),Space_price varchar(255),Roomate varchar(255));create table invoice (ID int identity(1,1),RoomID int ,UserID int ,edc_waterID int,edc_price varchar(255),water_price varchar(255),space_price varchar(255),trash_price varchar(255),Date date,Room_price varchar(255),Total varchar(255));create table edc_water(ID int identity(1,1),RoomId int ,UserID int ,Date date ,edc_new varchar(255),edc_old varchar(255),water_new varchar(255),water_old varchar(255),);create table customer(ID int identity(1,1),Name varchar(255),Sex varchar(10),Age varchar(255),Phone varchar(255),Image image);";
+        }
+        private void _feedSeed_admin(string connectionString)
+        {
+            SqlConnection cnn = new
+                SqlConnection(connectionString);
+            //";Initial Catalog="+DatabaseName+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "insert users(Name,Password) values ('admin','admin');";
+            cmd.Connection = cnn;
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

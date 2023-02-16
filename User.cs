@@ -1,26 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace moneyhome
 {
     public partial class User : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True");
-        string connectionString = @"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True";
-        SqlCommand myhome;
+        string connectionString;
+        SqlCommand cmd;
         SqlConnection cnn;
         SqlDataAdapter adapter;
         DataTable dt;
-        public User()
+        public User(string connection)
         {
+            connectionString = connection;
             InitializeComponent();
             showData_user();
         }
@@ -35,39 +29,29 @@ namespace moneyhome
         private void bt_insert_Click(object sender, EventArgs e)
         {
             cnn = new SqlConnection(connectionString);
-            myhome = new SqlCommand();
-            // note duplicate
-            for (int item = 0; item < dataview_user.Rows.Count - 1; item++)
-            {
-                if (password_user.Text == dataview_user.Rows[item].Cells[0].Value.ToString())
-                {
-                    MessageBox.Show("ID Duplicate");
-                    cnn.Close();
-                    return;
-                }
-
-            }
-            myhome.CommandText = "insert into Tb_User(User_Name,User_Sex,User_Phone,User_Password)" +
+            cmd = new SqlCommand();
+            cmd.CommandText =
+                "insert into Users(Name,Sex,Phone,Password)" +
                 "values(@param2,@param3,@param4,@param5)";
-            myhome.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = name_user.Text;
-            myhome.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = sex_user.Text;
-            myhome.Parameters.Add("@param4", SqlDbType.VarChar, 250).Value = phone_user.Text;
-            myhome.Parameters.Add("@param5", SqlDbType.Int).Value = password_user.Text;
+            cmd.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = name_user.Text;
+            cmd.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = CB_sex.Text;
+            cmd.Parameters.Add("@param4", SqlDbType.VarChar, 250).Value = phone_user.Text;
+            cmd.Parameters.Add("@param5", SqlDbType.Int).Value = password_user.Text;
             cnn.Open();
-            myhome.Connection = cnn;
-            myhome.ExecuteNonQuery();
+            cmd.Connection = cnn;
+            cmd.ExecuteNonQuery();
             cnn.Close();
             showData_user();
             id_user.Text = "";
             name_user.Text = "";
-            sex_user.Text = "";
+            CB_sex.Text = "";
             phone_user.Text = "";
             password_user.Text = "";
         }
         private void showData_user()
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("select * from Tb_User", cnn);
+            adapter = new SqlDataAdapter("select * from Users", cnn);
             dt = new DataTable();
             adapter.Fill(dt);
             dataview_user.DataSource = dt;
@@ -78,58 +62,44 @@ namespace moneyhome
         private void bt_search_Click(object sender, EventArgs e)
         {
             cnn = new SqlConnection(connectionString);
-            myhome = new SqlCommand();
-            myhome.CommandText = "select * from Tb_User where User_ID=@ID";
-            myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.text_filter.Text;
-            myhome.Connection = cnn;
+            cmd = new SqlCommand();
+            cmd.CommandText = "select * from Users where ID=@ID";
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.TB_filterSearch.Text;
+            cmd.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
-            try
+            kd = cmd.ExecuteReader();
+            while (kd.Read())
             {
-                kd = myhome.ExecuteReader();
-                while (kd.Read())
-                {
-                    this.id_user.Text = kd["User_ID"].ToString();
-                    this.name_user.Text = kd["User_name"].ToString();
-                    this.sex_user.Text = kd["User_Sex"].ToString();
-                    this.phone_user.Text = kd["User_Phone"].ToString();
-                    this.password_user.Text = kd["User_password"].ToString();
-
-
-
-                }
-                showData_user();
+                this.id_user.Text = kd["ID"].ToString();
+                this.name_user.Text = kd["name"].ToString();
+                this.CB_sex.Text = kd["Sex"].ToString();
+                this.phone_user.Text = kd["Phone"].ToString();
+                this.password_user.Text = kd["password"].ToString();
             }
-            catch
-            {
-                MessageBox.Show("Success!!");
-            }
-            finally
-            {
-                cnn.Close();
-
-
-            }
+            showData_user();
+            cnn.Close();
         }
-
         private void bt_update_Click(object sender, EventArgs e)
         {
-            myhome = new SqlCommand();
-            myhome.CommandText = "update Tb_User set User_Name=@param2,User_Sex=@param3,User_Phone=@param4,User_Password=@param5 where User_ID=@param1";
-            myhome.Parameters.Add("@param1", SqlDbType.Int).Value = this.id_user.Text;
-            myhome.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = this.name_user.Text;
-            myhome.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = this.sex_user.Text;
-            myhome.Parameters.Add("@param4", SqlDbType.VarChar,250).Value = this.phone_user.Text;
-            myhome.Parameters.Add("@param5", SqlDbType.VarChar,250).Value = this.password_user.Text;
+            cmd = new SqlCommand();
+            cmd.CommandText = "update Users " +
+                "set Name=@param2,Sex=@param3,Phone=@param4,Password=@param5 " +
+                "where ID=@param1";
+            cmd.Parameters.Add("@param1", SqlDbType.Int).Value = this.id_user.Text;
+            cmd.Parameters.Add("@param2", SqlDbType.VarChar, 250).Value = this.name_user.Text;
+            cmd.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = this.CB_sex.Text;
+            cmd.Parameters.Add("@param4", SqlDbType.VarChar, 250).Value = this.phone_user.Text;
+            cmd.Parameters.Add("@param5", SqlDbType.VarChar, 250).Value = this.password_user.Text;
             cnn.Open();
-            myhome.Connection = cnn;
-            myhome.ExecuteNonQuery();
+            cmd.Connection = cnn;
+            cmd.ExecuteNonQuery();
             cnn.Close();
             MessageBox.Show("Date Update Success!");
             showData_user();
             id_user.Text = "";
             name_user.Text = "";
-            sex_user.Text = "";
+            CB_sex.Text = "";
             phone_user.Text = "";
             password_user.Text = "";
         }
@@ -144,11 +114,11 @@ namespace moneyhome
             {
 
                 cnn = new SqlConnection(connectionString);
-                myhome = new SqlCommand();
-                myhome.CommandText = " delete  from Tb_Customer where Cus_ID =" + id_user.Text + "";
+                cmd = new SqlCommand();
+                cmd.CommandText = " delete  from users where ID =" + id_user.Text + "";
                 cnn.Open();
-                myhome.Connection = cnn;
-                myhome.ExecuteNonQuery();
+                cmd.Connection = cnn;
+                cmd.ExecuteNonQuery();
                 cnn.Close();
                 showData_user();
                 MessageBox.Show("Data delete Success!");
@@ -159,7 +129,7 @@ namespace moneyhome
         private void bt_filter_Click(object sender, EventArgs e)
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("select * from Tb_User where User_Name like '%" + text_filter.Text + "%'", cnn);
+            adapter = new SqlDataAdapter("select * from Users where Name like '%" + TB_filterSearch.Text + "%'", cnn);
             dt = new DataTable();
             adapter.Fill(dt);
             dataview_user.DataSource = dt;

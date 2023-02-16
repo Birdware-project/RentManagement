@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btn_close = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_next
@@ -120,11 +121,27 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Example : RentMangement";
             // 
+            // btn_close
+            // 
+            this.btn_close.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_close.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btn_close.FlatAppearance.BorderSize = 10;
+            this.btn_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btn_close.ForeColor = System.Drawing.Color.Red;
+            this.btn_close.Location = new System.Drawing.Point(534, 406);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(115, 32);
+            this.btn_close.TabIndex = 8;
+            this.btn_close.Text = "Close";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            // 
             // InitialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_close);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -151,5 +168,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_close;
     }
 }

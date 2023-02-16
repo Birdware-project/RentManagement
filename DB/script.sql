@@ -1,0 +1,1 @@
+insert users(Name,Password) values ('admin','admin');

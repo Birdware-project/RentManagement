@@ -35,9 +35,10 @@ namespace moneyhome
                     while ((s = sr.ReadLine()) != null)
                     {
                         //MessageBox.Show(s);
+                        Application.Run(new Login(s));
                     }
                     //MessageBox.Show(s);
-                    Application.Run(new Login(s));
+                    
                 }
             }
             catch (Exception Ex)

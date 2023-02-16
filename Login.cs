@@ -1,27 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace moneyhome
 {
     public partial class Login : Form
     {
-        string connectionString; 
-        
+        string connectionString;
         SqlCommand cmd;
         SqlConnection cnn;
         public Login(string connectionSource)
         {
             connectionString = connectionSource;
             InitializeComponent();
-            timer1.Start();
+            //MessageBox.Show(connectionString);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,7 +22,7 @@ namespace moneyhome
             string _userID;
             cnn = new SqlConnection(connectionString);
             cmd = new SqlCommand();
-            cmd.CommandText = "select * from Tb_User where User_name=@username";
+            cmd.CommandText = "select * from Users where name=@username";
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = this.LB_username.Text;
             cmd.Connection = cnn;
             cnn.Open();
@@ -43,14 +36,14 @@ namespace moneyhome
                 }
                 while (kd.Read())
                 {
-                    _userID = kd["user_id"].ToString();
-                    var _username = kd["User_name"].ToString();
-                    var _password = kd["User_password"].ToString();
+                    _userID = kd["id"].ToString();
+                    var _username = kd["name"].ToString();
+                    var _password = kd["password"].ToString();
 
                     if (this.LB_username.Text == _username && this.LB_password.Text == _password)
                     {
                         this.Close();
-                        Rent mm = new Rent(_userID,connectionString);
+                        Rent mm = new Rent(_userID, connectionString);
                         mm.Show();
                     }
 
@@ -68,10 +61,19 @@ namespace moneyhome
 
         private void button2_Click(object sender, EventArgs e)
         {
-                this.Hide();
-                user_admin kk = new user_admin();
-                kk.Show();
-           
+            this.Hide();
+            using (user_admin kk = new user_admin(connectionString, this))
+            {
+                if (kk.ShowDialog(this) == DialogResult.Cancel)
+                {
+                    this.Show();
+                }
+            }
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
