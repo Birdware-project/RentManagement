@@ -54,10 +54,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.edcAndWaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.edcAndWaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.LB_userID = new System.Windows.Forms.Label();
             this.RentID = new System.Windows.Forms.Label();
@@ -390,20 +390,6 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(80, 32);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
-            // customerToolStripMenuItem
-            // 
-            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(235, 32);
-            this.customerToolStripMenuItem.Text = "Customer";
-            this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
-            // 
-            // edcAndWaterToolStripMenuItem
-            // 
-            this.edcAndWaterToolStripMenuItem.Name = "edcAndWaterToolStripMenuItem";
-            this.edcAndWaterToolStripMenuItem.Size = new System.Drawing.Size(235, 32);
-            this.edcAndWaterToolStripMenuItem.Text = "Edc and Water";
-            this.edcAndWaterToolStripMenuItem.Click += new System.EventHandler(this.edcAndWaterToolStripMenuItem_Click);
-            // 
             // roomToolStripMenuItem
             // 
             this.roomToolStripMenuItem.Name = "roomToolStripMenuItem";
@@ -417,6 +403,20 @@
             this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(235, 32);
             this.invoiceToolStripMenuItem.Text = "Invoice";
             this.invoiceToolStripMenuItem.Click += new System.EventHandler(this.invoiceToolStripMenuItem_Click);
+            // 
+            // customerToolStripMenuItem
+            // 
+            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(235, 32);
+            this.customerToolStripMenuItem.Text = "Customer";
+            this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
+            // 
+            // edcAndWaterToolStripMenuItem
+            // 
+            this.edcAndWaterToolStripMenuItem.Name = "edcAndWaterToolStripMenuItem";
+            this.edcAndWaterToolStripMenuItem.Size = new System.Drawing.Size(235, 32);
+            this.edcAndWaterToolStripMenuItem.Text = "Edc and Water";
+            this.edcAndWaterToolStripMenuItem.Click += new System.EventHandler(this.edcAndWaterToolStripMenuItem_Click);
             // 
             // label1
             // 

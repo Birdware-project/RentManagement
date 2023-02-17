@@ -14,8 +14,8 @@ create table Rent(
 	ID int identity(1,1),
 	RoomID int ,
 	UserID int,
-	Trash_price varchar(255),
-	Space_price varchar(255),
+	isTrash varchar(255),
+	isSpace varchar(255),
 	Roomate varchar(255)
 );
 create table invoice (

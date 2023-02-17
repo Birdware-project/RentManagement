@@ -68,6 +68,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +79,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(47, 8);
+            this.label2.Location = new System.Drawing.Point(74, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 36);
             this.label2.TabIndex = 5;
@@ -90,7 +91,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(72, 91);
+            this.label3.Location = new System.Drawing.Point(99, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 36);
             this.label3.TabIndex = 6;
@@ -102,7 +103,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(104, 45);
+            this.label8.Location = new System.Drawing.Point(131, 45);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 36);
             this.label8.TabIndex = 11;
@@ -114,7 +115,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(773, 9);
+            this.label9.Location = new System.Drawing.Point(792, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(109, 36);
             this.label9.TabIndex = 12;
@@ -124,7 +125,7 @@
             // 
             this.date_time.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.date_time.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_time.Location = new System.Drawing.Point(206, 51);
+            this.date_time.Location = new System.Drawing.Point(233, 51);
             this.date_time.Name = "date_time";
             this.date_time.Size = new System.Drawing.Size(121, 22);
             this.date_time.TabIndex = 17;
@@ -140,7 +141,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(927, 225);
+            this.dataGridView1.Size = new System.Drawing.Size(965, 225);
             this.dataGridView1.TabIndex = 23;
             // 
             // button2
@@ -149,7 +150,7 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(833, 401);
+            this.button2.Location = new System.Drawing.Point(871, 401);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 37);
             this.button2.TabIndex = 24;
@@ -163,7 +164,7 @@
             this.bt_search.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_search.ForeColor = System.Drawing.Color.White;
-            this.bt_search.Location = new System.Drawing.Point(527, 363);
+            this.bt_search.Location = new System.Drawing.Point(613, 363);
             this.bt_search.Name = "bt_search";
             this.bt_search.Size = new System.Drawing.Size(107, 37);
             this.bt_search.TabIndex = 26;
@@ -177,7 +178,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(35, 180);
+            this.label6.Location = new System.Drawing.Point(62, 180);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(143, 36);
             this.label6.TabIndex = 9;
@@ -189,7 +190,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(20, 215);
+            this.label7.Location = new System.Drawing.Point(47, 215);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(158, 36);
             this.label7.TabIndex = 10;
@@ -199,7 +200,7 @@
             // 
             this.vehicle_price.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.vehicle_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicle_price.Location = new System.Drawing.Point(206, 214);
+            this.vehicle_price.Location = new System.Drawing.Point(233, 214);
             this.vehicle_price.Multiline = true;
             this.vehicle_price.Name = "vehicle_price";
             this.vehicle_price.Size = new System.Drawing.Size(121, 32);
@@ -209,7 +210,7 @@
             // 
             this.trash_price.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.trash_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trash_price.Location = new System.Drawing.Point(206, 180);
+            this.trash_price.Location = new System.Drawing.Point(233, 180);
             this.trash_price.Multiline = true;
             this.trash_price.Name = "trash_price";
             this.trash_price.Size = new System.Drawing.Size(121, 32);
@@ -221,7 +222,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(31, 312);
+            this.label4.Location = new System.Drawing.Point(58, 312);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 36);
             this.label4.TabIndex = 7;
@@ -233,7 +234,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(47, 277);
+            this.label5.Location = new System.Drawing.Point(74, 277);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 36);
             this.label5.TabIndex = 8;
@@ -243,7 +244,7 @@
             // 
             this.water_price.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.water_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.water_price.Location = new System.Drawing.Point(206, 312);
+            this.water_price.Location = new System.Drawing.Point(233, 312);
             this.water_price.Multiline = true;
             this.water_price.Name = "water_price";
             this.water_price.Size = new System.Drawing.Size(121, 32);
@@ -253,7 +254,7 @@
             // 
             this.edc_price.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.edc_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.edc_price.Location = new System.Drawing.Point(206, 277);
+            this.edc_price.Location = new System.Drawing.Point(233, 277);
             this.edc_price.Multiline = true;
             this.edc_price.Name = "edc_price";
             this.edc_price.Size = new System.Drawing.Size(121, 32);
@@ -265,7 +266,7 @@
             this.button3.BackColor = System.Drawing.Color.SteelBlue;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(22, 366);
+            this.button3.Location = new System.Drawing.Point(13, 366);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 37);
             this.button3.TabIndex = 25;
@@ -279,7 +280,7 @@
             this.bt_update.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_update.ForeColor = System.Drawing.Color.White;
-            this.bt_update.Location = new System.Drawing.Point(127, 366);
+            this.bt_update.Location = new System.Drawing.Point(118, 366);
             this.bt_update.Name = "bt_update";
             this.bt_update.Size = new System.Drawing.Size(105, 37);
             this.bt_update.TabIndex = 27;
@@ -293,18 +294,18 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(691, 115);
+            this.label10.Location = new System.Drawing.Point(710, 137);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(160, 36);
+            this.label10.Size = new System.Drawing.Size(156, 36);
             this.label10.TabIndex = 31;
-            this.label10.Text = "Room_Money :";
+            this.label10.Text = "Room Money :";
             // 
             // CB_roomid
             // 
             this.CB_roomid.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CB_roomid.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_roomid.FormattingEnabled = true;
-            this.CB_roomid.Location = new System.Drawing.Point(206, 99);
+            this.CB_roomid.Location = new System.Drawing.Point(233, 106);
             this.CB_roomid.Name = "CB_roomid";
             this.CB_roomid.Size = new System.Drawing.Size(121, 24);
             this.CB_roomid.TabIndex = 33;
@@ -316,7 +317,7 @@
             this.money_room.AutoSize = true;
             this.money_room.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.money_room.ForeColor = System.Drawing.Color.Black;
-            this.money_room.Location = new System.Drawing.Point(857, 115);
+            this.money_room.Location = new System.Drawing.Point(876, 137);
             this.money_room.Name = "money_room";
             this.money_room.Size = new System.Drawing.Size(26, 36);
             this.money_room.TabIndex = 34;
@@ -327,7 +328,7 @@
             this.cb_edc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cb_edc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_edc.FormattingEnabled = true;
-            this.cb_edc.Location = new System.Drawing.Point(206, 139);
+            this.cb_edc.Location = new System.Drawing.Point(233, 139);
             this.cb_edc.Name = "cb_edc";
             this.cb_edc.Size = new System.Drawing.Size(121, 24);
             this.cb_edc.TabIndex = 36;
@@ -339,7 +340,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(6, 133);
+            this.label11.Location = new System.Drawing.Point(33, 133);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(172, 36);
             this.label11.TabIndex = 35;
@@ -351,7 +352,7 @@
             this.total_num_edc.AutoSize = true;
             this.total_num_edc.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total_num_edc.ForeColor = System.Drawing.Color.Black;
-            this.total_num_edc.Location = new System.Drawing.Point(857, 151);
+            this.total_num_edc.Location = new System.Drawing.Point(876, 173);
             this.total_num_edc.Name = "total_num_edc";
             this.total_num_edc.Size = new System.Drawing.Size(26, 36);
             this.total_num_edc.TabIndex = 38;
@@ -363,7 +364,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(638, 151);
+            this.label13.Location = new System.Drawing.Point(657, 173);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(216, 36);
             this.label13.TabIndex = 37;
@@ -375,7 +376,7 @@
             this.total_num_water.AutoSize = true;
             this.total_num_water.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total_num_water.ForeColor = System.Drawing.Color.Black;
-            this.total_num_water.Location = new System.Drawing.Point(857, 187);
+            this.total_num_water.Location = new System.Drawing.Point(876, 209);
             this.total_num_water.Name = "total_num_water";
             this.total_num_water.Size = new System.Drawing.Size(26, 36);
             this.total_num_water.TabIndex = 40;
@@ -387,7 +388,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(622, 185);
+            this.label15.Location = new System.Drawing.Point(641, 207);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(232, 36);
             this.label15.TabIndex = 39;
@@ -399,7 +400,7 @@
             this.vehicle_space.AutoSize = true;
             this.vehicle_space.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vehicle_space.ForeColor = System.Drawing.Color.Black;
-            this.vehicle_space.Location = new System.Drawing.Point(857, 267);
+            this.vehicle_space.Location = new System.Drawing.Point(876, 289);
             this.vehicle_space.Name = "vehicle_space";
             this.vehicle_space.Size = new System.Drawing.Size(26, 36);
             this.vehicle_space.TabIndex = 46;
@@ -411,7 +412,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(691, 267);
+            this.label16.Location = new System.Drawing.Point(710, 289);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(163, 36);
             this.label16.TabIndex = 45;
@@ -423,7 +424,7 @@
             this.trash_service.AutoSize = true;
             this.trash_service.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trash_service.ForeColor = System.Drawing.Color.Black;
-            this.trash_service.Location = new System.Drawing.Point(857, 231);
+            this.trash_service.Location = new System.Drawing.Point(876, 253);
             this.trash_service.Name = "trash_service";
             this.trash_service.Size = new System.Drawing.Size(26, 36);
             this.trash_service.TabIndex = 48;
@@ -435,7 +436,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(691, 231);
+            this.label19.Location = new System.Drawing.Point(710, 253);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(163, 36);
             this.label19.TabIndex = 47;
@@ -446,7 +447,7 @@
             this.LB_invoiceID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LB_invoiceID.AutoSize = true;
             this.LB_invoiceID.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_invoiceID.Location = new System.Drawing.Point(202, 8);
+            this.LB_invoiceID.Location = new System.Drawing.Point(229, 8);
             this.LB_invoiceID.Name = "LB_invoiceID";
             this.LB_invoiceID.Size = new System.Drawing.Size(59, 36);
             this.LB_invoiceID.TabIndex = 54;
@@ -457,7 +458,7 @@
             this.Lb_userID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Lb_userID.AutoSize = true;
             this.Lb_userID.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_userID.Location = new System.Drawing.Point(888, 9);
+            this.Lb_userID.Location = new System.Drawing.Point(907, 9);
             this.Lb_userID.Name = "Lb_userID";
             this.Lb_userID.Size = new System.Drawing.Size(48, 36);
             this.Lb_userID.TabIndex = 55;
@@ -467,7 +468,7 @@
             // 
             this.TB_filter.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TB_filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_filter.Location = new System.Drawing.Point(414, 406);
+            this.TB_filter.Location = new System.Drawing.Point(500, 406);
             this.TB_filter.Multiline = true;
             this.TB_filter.Name = "TB_filter";
             this.TB_filter.Size = new System.Drawing.Size(333, 32);
@@ -479,7 +480,7 @@
             this.button1.BackColor = System.Drawing.Color.SteelBlue;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(414, 363);
+            this.button1.Location = new System.Drawing.Point(500, 363);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 37);
             this.button1.TabIndex = 57;
@@ -492,7 +493,7 @@
             this.btn_print.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_print.ForeColor = System.Drawing.Color.White;
-            this.btn_print.Location = new System.Drawing.Point(238, 366);
+            this.btn_print.Location = new System.Drawing.Point(336, 366);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(107, 37);
             this.btn_print.TabIndex = 58;
@@ -503,6 +504,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.CB_roomid);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.LB_invoiceID);
@@ -524,7 +526,7 @@
             this.panel1.Controls.Add(this.button3);
             this.panel1.Location = new System.Drawing.Point(12, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(381, 423);
+            this.panel1.Size = new System.Drawing.Size(463, 423);
             this.panel1.TabIndex = 59;
             // 
             // label1
@@ -533,7 +535,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("KhmerDLStation TNRB", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(508, 12);
+            this.label1.Location = new System.Drawing.Point(527, -12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(200, 90);
             this.label1.TabIndex = 60;
@@ -545,7 +547,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(540, 86);
+            this.label12.Location = new System.Drawing.Point(607, 69);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(136, 36);
             this.label12.TabIndex = 61;
@@ -557,19 +559,33 @@
             this.button4.BackColor = System.Drawing.Color.SteelBlue;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(640, 363);
+            this.button4.Location = new System.Drawing.Point(726, 363);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(107, 37);
             this.button4.TabIndex = 62;
             this.button4.Text = "Excel";
             this.button4.UseVisualStyleBackColor = false;
             // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button5.BackColor = System.Drawing.Color.SteelBlue;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.Black;
+            this.button5.Location = new System.Drawing.Point(228, 366);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(105, 37);
+            this.button5.TabIndex = 59;
+            this.button5.Text = "clear";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // invoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(944, 694);
+            this.ClientSize = new System.Drawing.Size(982, 694);
             this.ControlBox = false;
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label12);
@@ -645,5 +661,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

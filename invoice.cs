@@ -40,7 +40,7 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select roomid from Room";
+            myhome.CommandText = "select id from Room";
             myhome.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
@@ -48,7 +48,7 @@ namespace moneyhome
             kd = myhome.ExecuteReader();
             while (kd.Read())
             {
-                this.CB_roomid.Items.Add(kd["RoomID"].ToString());
+                this.CB_roomid.Items.Add(kd["ID"].ToString());
             }
         }
         private void _ListEDC()
@@ -81,19 +81,8 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            // note duplicate
-            //for (int item = 0; item < dataGridView1.Rows.Count - 1; item++)
-            //{
-            //    if (id_invoice.Text == dataGridView1.Rows[item].Cells[0].Value.ToString())
-            //    {
-            //        MessageBox.Show("ID Duplicate");
-            //        cnn.Close();
-            //        return;
-            //    }
-
-            //}
             myhome.CommandText = "insert into invoice(" +
-                "Room_ID,User_ID,Edc_ID,EDC_Price,Water_Price,Vehicle_Price,Trash_Price,Date,Room_Money)" +
+                "Room_ID,User_ID,Edc_ID,EDC_Price,Water_Price,isVehicle,isTrash,Date,Room_Money)" +
                 "values(" +
                 "@roomID,@userID,@edc_price,@water_price,@vehicle_price,@trash_price,@date_time,@money_room,@edc)";
             myhome.Parameters.Add("@roomID", SqlDbType.Int).Value = CB_roomid.Text;
@@ -136,7 +125,7 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select * from Tb_menu where Rent_ID=@ID";
+            myhome.CommandText = "select * from Rent a join Room b where a.ID=@ID";
             myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.CB_roomid.Text;
             myhome.Connection = cnn;
             cnn.Open();
@@ -145,7 +134,7 @@ namespace moneyhome
             kd = myhome.ExecuteReader();
             while (kd.Read())
             {
-                this.money_room.Text = (kd["Room_Money"].ToString());
+                this.money_room.Text = (kd["Price"].ToString());
                 this.trash_service.Text = (kd["Trash_Service"].ToString());
                 this.vehicle_space.Text = (kd["Vehicle_Space"].ToString());
             }
@@ -241,7 +230,6 @@ namespace moneyhome
             cnn.Close();
             MessageBox.Show("Date Update Success!");
             showData_invoice();
-            Lb_userID.Text = "";
             LB_invoiceID.Text = "";
             CB_roomid.Text = "";
             edc_price.Text = "";
@@ -268,6 +256,24 @@ namespace moneyhome
                 this.total_num_water.Text,this.water_price.Text, this.total_num_edc.Text,this.trash_price.Text,
                 this.vehicle_price.Text,this.money_room.Text,this.edc_price.Text,this.vehicle_space.Text,this.trash_service.Text);
             viewInvoice.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            LB_invoiceID.Text = "";
+            CB_roomid.Text = "";
+            edc_price.Text = "";
+            vehicle_price.Text = "";
+            date_time.Text = DateTime.Now.ToString();
+            money_room.Text = "";
+            total_num_water.Text = "";
+            total_num_edc.Text = "";
+            vehicle_space.Text = "";
+            trash_service.Text = "";
+            cb_edc.Text = "";
+            trash_price.Text = "";
+            water_price.Text = "";
+
         }
     }
 }

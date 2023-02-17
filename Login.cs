@@ -46,6 +46,8 @@ namespace moneyhome
                     {
                         if (mm.ShowDialog(this) == DialogResult.Cancel)
                         {
+                            LB_password.Text = "";
+                            LB_username.Text = "";
                             this.Show();
                         }
                     }

@@ -74,7 +74,7 @@ namespace moneyhome
         private void bt_filtercus_Click(object sender, EventArgs e)
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("select * from Tb_Customer where Cus_Name like '%" + filter_cus.Text + "%'", cnn);
+            adapter = new SqlDataAdapter("select * from Customer where Name like '%" + filter_cus.Text + "%'", cnn);
             dt = new DataTable();
             adapter.Fill(dt);
             datagv_customer.DataSource = dt;
@@ -113,12 +113,12 @@ namespace moneyhome
                 x++;
             }
             cmd.CommandText = "insert into Rent" +
-                "(RoomID,Trash_price,Space_price,Roomate,UserID)" +
-                "values(@RoomID,@trash,@vehicle,@roomate,@UserID)";
+                "(RoomID,isTrash,isSpace,Roomate,UserID)" +
+                "values(@RoomID,@istrash,@isvehicle,@roomate,@UserID)";
 
             cmd.Parameters.Add("@RoomID", SqlDbType.VarChar, 250).Value = CB_roomID.Text;
-            cmd.Parameters.Add("@trash", SqlDbType.Int).Value = _trash;
-            cmd.Parameters.Add("@vehicle", SqlDbType.Int).Value = _vehicle;
+            cmd.Parameters.Add("@istrash", SqlDbType.Int).Value = _trash;
+            cmd.Parameters.Add("@isvehicle", SqlDbType.Int).Value = _vehicle;
             cmd.Parameters.Add("@roomate", SqlDbType.VarChar,250).Value = _roomate;
             cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = _userID;
             cnn.Open();
@@ -175,8 +175,8 @@ namespace moneyhome
                 {
                     this.RentID.Text = kd["ID"].ToString();
                     this.CB_roomID.Text = kd["Roomid"].ToString();
-                    this.check_trash.Checked = Convert.ToInt32(kd["Trash_price"].ToString()) == 1?true:false;
-                    this.check_vehicle.Checked = Convert.ToInt32(kd["Space_price"].ToString()) == 1 ? true : false;
+                    this.check_trash.Checked = Convert.ToInt32(kd["isTrash"].ToString()) == 1?true:false;
+                    this.check_vehicle.Checked = Convert.ToInt32(kd["isSpace"].ToString()) == 1 ? true : false;
                     this.LB_userID.Text = kd["UserID"].ToString();
 
                     String str = kd["Roomate"].ToString();
@@ -227,7 +227,7 @@ namespace moneyhome
             }
             cmd.CommandText = "update Rent set " +
                 "RoomID=@roomID," +
-                "Trash_price=@trash,Space_price=@vehicle,Roomate=@roomate " +
+                "isTrash=@trash,isSpace=@vehicle,Roomate=@roomate " +
                 "where ID=@RentID";
             cmd.Parameters.Add("@RentID", SqlDbType.Int).Value = RentID.Text;
             cmd.Parameters.Add("@trash", SqlDbType.Int).Value = _trash;
@@ -263,8 +263,14 @@ namespace moneyhome
 
         private void roomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Room room = new Room(connectionString);
-            room.Show();
+            using (Room room = new Room(connectionString))
+            {
+                if (room.ShowDialog(this) == DialogResult.Cancel)
+                {
+                    this.Close();
+                    new Rent(_userID.ToString(), connectionString).Show();
+                }
+            }
         }
 
         private void invoiceToolStripMenuItem_Click(object sender, EventArgs e)
