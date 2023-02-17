@@ -62,11 +62,11 @@
             this.LB_userID = new System.Windows.Forms.Label();
             this.RentID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.CB_roomID = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.CB_roomID = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataview_Room)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagv_customer)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -381,10 +381,10 @@
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customerToolStripMenuItem,
-            this.edcAndWaterToolStripMenuItem,
             this.roomToolStripMenuItem,
-            this.invoiceToolStripMenuItem});
+            this.invoiceToolStripMenuItem,
+            this.customerToolStripMenuItem,
+            this.edcAndWaterToolStripMenuItem});
             this.menuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(80, 32);
@@ -475,29 +475,14 @@
             this.panel1.Size = new System.Drawing.Size(1050, 328);
             this.panel1.TabIndex = 45;
             // 
-            // label4
+            // CB_roomID
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("KhmerDLStation TNRB", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(20, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 85);
-            this.label4.TabIndex = 45;
-            this.label4.Text = "Rent";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(139, 72);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 36);
-            this.label7.TabIndex = 45;
-            this.label7.Text = "management";
+            this.CB_roomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_roomID.FormattingEnabled = true;
+            this.CB_roomID.Location = new System.Drawing.Point(193, 53);
+            this.CB_roomID.Name = "CB_roomID";
+            this.CB_roomID.Size = new System.Drawing.Size(139, 28);
+            this.CB_roomID.TabIndex = 47;
             // 
             // groupBox1
             // 
@@ -530,14 +515,29 @@
             this.label10.TabIndex = 47;
             this.label10.Text = "Customer";
             // 
-            // CB_roomID
+            // label4
             // 
-            this.CB_roomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_roomID.FormattingEnabled = true;
-            this.CB_roomID.Location = new System.Drawing.Point(193, 53);
-            this.CB_roomID.Name = "CB_roomID";
-            this.CB_roomID.Size = new System.Drawing.Size(139, 28);
-            this.CB_roomID.TabIndex = 47;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("KhmerDLStation TNRB", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(20, 39);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(138, 85);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Rent";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(139, 72);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(136, 36);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "management";
             // 
             // Rent
             // 

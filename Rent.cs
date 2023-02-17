@@ -26,7 +26,9 @@ namespace moneyhome
             connectionString= connectionSource;
             InitializeComponent();
             showData_customer();
-            showData_Room();
+            showData_Rent();
+            list_ID_Room();
+
             LB_userID.Text = UserID;
             _userID = Int32.Parse(UserID);
         }
@@ -35,7 +37,21 @@ namespace moneyhome
         {
 
         }
+        private void list_ID_Room()
+        {
+            cnn = new SqlConnection(connectionString);
+            cmd = new SqlCommand();
+            cmd.CommandText = "select id from Room";
+            cmd.Connection = cnn;
+            cnn.Open();
+            SqlDataReader kd;
 
+            kd = cmd.ExecuteReader();
+            while (kd.Read())
+            {
+                this.CB_roomID.Items.Add(kd["ID"].ToString());
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -117,9 +133,9 @@ namespace moneyhome
             check_vehicle.Checked = false;
             label_member.Text = "";
             MessageBox.Show("Data insert Success");
-            showData_Room();
+            showData_Rent();
         }
-        private void showData_Room()
+        private void showData_Rent()
         {
             cnn = cnn = new SqlConnection(connectionString);
             adapter = new SqlDataAdapter("select * from Rent", cnn);
@@ -175,7 +191,7 @@ namespace moneyhome
                     
 
                 }
-                showData_Room();
+                showData_Rent();
             }
             catch
             {
@@ -222,7 +238,7 @@ namespace moneyhome
             cmd.ExecuteNonQuery();
             cnn.Close();
             MessageBox.Show("Date Update Success!");
-            showData_Room();
+            showData_Rent();
             RentID.Text = "";
             roomPrice.Text = "";
             list.Items.Clear();
@@ -247,7 +263,7 @@ namespace moneyhome
 
         private void roomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Room room = new Room();
+            Room room = new Room(connectionString);
             room.Show();
         }
 
