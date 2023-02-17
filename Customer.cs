@@ -15,19 +15,19 @@ namespace moneyhome
 {
     public partial class Customer : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True");
-        string connectionString = @"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True";
+        string connectionString;
         SqlCommand myhome;
         SqlConnection cnn;
         SqlDataAdapter adapter;
         DataTable dt;
 
         private string _userID;
-        public Customer(string Id)
+        public Customer(string connection,string Id)
         {
             _userID = Id;
-            
+            connectionString= connection;
             InitializeComponent();
+            Lb_userID.Text = Id;
             showData_customer();
         }
 
@@ -38,25 +38,17 @@ namespace moneyhome
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //for (int item = 0; item < dataview_customer.Rows.Count - 1; item++)
-            //{
-            //    if (id_cus.Text == dataview_customer.Rows[item].Cells[0].Value.ToString())
-            //    {
-            //        MessageBox.Show("ID Duplicate");
-            //        cnn.Close();
-            //        return;
-            //    }
-
-            //}
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
             MemoryStream ms;
-            myhome.CommandText = "INSERT INTO  Tb_Customer(Cus_Name,Cus_Sex,Cus_Age,Cus_Phone,Photo) VALUES (@param2,@param3,@param4,@param5,@picture1)";
+            myhome.CommandText = "INSERT INTO " +
+                "Customer(Name,Sex,Age,Phone,image) " +
+                "VALUES(@name,@sex,@age,@phone,@picture)";
 
             if (pictureBox1.Image != null)
             {
@@ -66,12 +58,12 @@ namespace moneyhome
                 byte[] photo_aray = new byte[ms.Length];
                 ms.Position = 0;
                 ms.Read(photo_aray, 0, photo_aray.Length);
-                myhome.Parameters.AddWithValue("@picture1", photo_aray);
+                myhome.Parameters.AddWithValue("@picture", photo_aray);
             }
-            myhome.Parameters.Add("@param2", SqlDbType.VarChar,250).Value = this.name_cus.Text;
-            myhome.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = this.sex_cus.Text;
-            myhome.Parameters.Add("@param4", SqlDbType.VarChar, 250).Value = this.age_cus.Text;
-            myhome.Parameters.Add("@param5", SqlDbType.VarChar,250).Value = this.phone_cus.Text;
+            myhome.Parameters.Add("@name", SqlDbType.VarChar,250).Value = this.name_cus.Text;
+            myhome.Parameters.Add("@sex", SqlDbType.VarChar, 250).Value = this.CB_sex.Text;
+            myhome.Parameters.Add("@age", SqlDbType.VarChar, 250).Value = this.age_cus.Text;
+            myhome.Parameters.Add("@phone", SqlDbType.VarChar,250).Value = this.phone_cus.Text;
             myhome.Connection = cnn;
             cnn.Open();
             int aff = myhome.ExecuteNonQuery();
@@ -80,7 +72,7 @@ namespace moneyhome
             showData_customer();
             name_cus.Text = "";
             age_cus.Text = "";
-            sex_cus.Text = "";
+            CB_sex.Text = "";
             phone_cus.Text = "";
             pictureBox1.Image = null;
            
@@ -88,7 +80,7 @@ namespace moneyhome
         private void showData_customer()
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("select * from Tb_Customer", cnn);
+            adapter = new SqlDataAdapter("select Id,name,age,sex,phone from Customer", cnn);
             dt = new DataTable();
             adapter.Fill(dt);
             dataview_customer.DataSource = dt;
@@ -111,8 +103,8 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select * from Tb_Customer where Cus_ID=@ID";
-            myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.filter_cus.Text;
+            myhome.CommandText = "select * from Customer where ID=@ID";
+            myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.TB_filterSearch.Text;
             myhome.Connection = cnn;
 
             cnn.Open();
@@ -122,13 +114,13 @@ namespace moneyhome
                 kd = myhome.ExecuteReader();
                 while (kd.Read())
                 {
-                    this.LB_customer.Text = kd["Cus_ID"].ToString();
-                    this.name_cus.Text = kd["Cus_Name"].ToString();
-                    this.sex_cus.Text = kd["Cus_Sex"].ToString();
-                    this.age_cus.Text = kd["Cus_Age"].ToString();
-                    this.phone_cus.Text = kd["Cus_Phone"].ToString();
+                    this.LB_customer.Text = kd["ID"].ToString();
+                    this.name_cus.Text = kd["Name"].ToString();
+                    this.CB_sex.Text = kd["Sex"].ToString();
+                    this.age_cus.Text = kd["Age"].ToString();
+                    this.phone_cus.Text = kd["Phone"].ToString();
 
-                    byte[] photo_aray = (byte[])kd["Photo"];
+                    byte[] photo_aray = (byte[])kd["image"];
                     MemoryStream ms = new MemoryStream(photo_aray);
                     pictureBox1.Image = Image.FromStream(ms);
                 }
@@ -141,7 +133,8 @@ namespace moneyhome
         {
             myhome = new SqlCommand();
             MemoryStream ms;
-            myhome.CommandText = "update Tb_Customer set Cus_Name=@param2,Cus_Sex=@param3,Cus_Age=@param4,Cus_Phone=@param5,Photo=@picture1 where Cus_ID=@param1";
+            myhome.CommandText = "update Customer set " +
+                "Name=@name,Sex=@sex,Age=@age,Phone=@phone,image=@picture1 where ID=@id";
             if (pictureBox1.Image != null)
             {
                 //using MemoryStream:
@@ -152,11 +145,11 @@ namespace moneyhome
                 ms.Read(photo_aray, 0, photo_aray.Length);
                 myhome.Parameters.AddWithValue("@picture1", photo_aray);
             }
-            myhome.Parameters.Add("@param1", SqlDbType.Int).Value = this.LB_customer.Text;
-            myhome.Parameters.Add("@param2", SqlDbType.VarChar,250).Value = this.name_cus.Text;
-            myhome.Parameters.Add("@param3", SqlDbType.VarChar, 250).Value = this.sex_cus.Text;
-            myhome.Parameters.Add("@param4", SqlDbType.VarChar, 250).Value = this.age_cus.Text;
-            myhome.Parameters.Add("@param5", SqlDbType.VarChar,250).Value = this.phone_cus.Text;
+            myhome.Parameters.Add("@id", SqlDbType.Int).Value = this.LB_customer.Text;
+            myhome.Parameters.Add("@name", SqlDbType.VarChar,250).Value = this.name_cus.Text;
+            myhome.Parameters.Add("@sex", SqlDbType.VarChar, 250).Value = this.CB_sex.Text;
+            myhome.Parameters.Add("@age", SqlDbType.VarChar, 250).Value = this.age_cus.Text;
+            myhome.Parameters.Add("@phone", SqlDbType.VarChar,250).Value = this.phone_cus.Text;
             cnn.Open();
             myhome.Connection = cnn;
             myhome.ExecuteNonQuery();
@@ -165,7 +158,7 @@ namespace moneyhome
             LB_customer.Text = "";
             name_cus.Text = "";
             age_cus.Text = "";
-            sex_cus.Text = "";
+            CB_sex.Text = "";
             phone_cus.Text = "";
             pictureBox1.Image = null;
             showData_customer();
@@ -182,7 +175,7 @@ namespace moneyhome
 
                 cnn = new SqlConnection(connectionString);
                 myhome = new SqlCommand();
-                myhome.CommandText = " delete  from Tb_Customer where Cus_ID =" + label1.Text + "";
+                myhome.CommandText = " delete  from Customer where ID =" + label1.Text + "";
                 cnn.Open();
                 myhome.Connection = cnn;
                 myhome.ExecuteNonQuery();
@@ -195,7 +188,7 @@ namespace moneyhome
         private void bt_filter_Click(object sender, EventArgs e)
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("select * from Tb_Customer where Cus_Name like '%" + filter_cus.Text + "%'", cnn);
+            adapter = new SqlDataAdapter("select * from Customer where Name like '%" + TB_filterSearch.Text + "%'", cnn);
             dt = new DataTable();
             adapter.Fill(dt);
             dataview_customer.DataSource = dt;
@@ -207,10 +200,10 @@ namespace moneyhome
             LB_customer.Text = "";
             name_cus.Text = "";
             age_cus.Text = "";
-            sex_cus.Text = "";
+            CB_sex.Text = "";
             phone_cus.Text = "";
             pictureBox1.Image = null;
-            filter_cus.Text = "";
+            TB_filterSearch.Text = "";
         }
     }
 }

@@ -256,7 +256,7 @@ namespace moneyhome
 
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer customer = new Customer(this._userID.ToString());
+            Customer customer = new Customer(connectionString,this._userID.ToString());
             customer.Show();
             showData_customer();
         }
