@@ -14,16 +14,16 @@ namespace moneyhome
 {
     public partial class invoice : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True");
-        string connectionString = @"Data Source=DESKTOP-FA6BV2O\SQLEXPRESS;Initial Catalog=program_c;Integrated Security=True";
+        string connectionString;
         SqlCommand myhome;
         SqlConnection cnn;
         SqlDataAdapter adapter;
         DataTable dt;
         private string _userID;
-        public invoice(string userID)
+        public invoice(string connection,string userID)
         {
             InitializeComponent();
+            connectionString = connection;
             Lb_userID.Text = userID;
             _userID = userID;
             showData_invoice();
@@ -40,7 +40,7 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select room_id from Tb_Room";
+            myhome.CommandText = "select roomid from Room";
             myhome.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
@@ -48,14 +48,14 @@ namespace moneyhome
             kd = myhome.ExecuteReader();
             while (kd.Read())
             {
-                this.CB_roomid.Items.Add(kd["Room_ID"].ToString());
+                this.CB_roomid.Items.Add(kd["RoomID"].ToString());
             }
         }
         private void _ListEDC()
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select ID from Tb_edcandwater";
+            myhome.CommandText = "select ID from edc_water";
             myhome.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
@@ -69,7 +69,7 @@ namespace moneyhome
         private void showData_invoice()
         {
             cnn = cnn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("select * from Tb_Invoice", cnn);
+            adapter = new SqlDataAdapter("select * from Invoice", cnn);
             dt = new DataTable();
             adapter.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -92,7 +92,7 @@ namespace moneyhome
             //    }
 
             //}
-            myhome.CommandText = "insert into Tb_invoice(" +
+            myhome.CommandText = "insert into invoice(" +
                 "Room_ID,User_ID,Edc_ID,EDC_Price,Water_Price,Vehicle_Price,Trash_Price,Date,Room_Money)" +
                 "values(" +
                 "@roomID,@userID,@edc_price,@water_price,@vehicle_price,@trash_price,@date_time,@money_room,@edc)";

@@ -249,7 +249,7 @@ namespace moneyhome
 
         private void edcAndWaterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            edc_water edc = new edc_water();
+            edc_water edc = new edc_water(connectionString,_userID.ToString());
             edc.Show();
             
         }
@@ -269,7 +269,7 @@ namespace moneyhome
 
         private void invoiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            invoice invoice = new invoice(this._userID.ToString());
+            invoice invoice = new invoice(connectionString,this._userID.ToString());
             invoice.Show();
         }
     }
