@@ -115,5 +115,12 @@ namespace moneyhome
             LB_roomPrice.Text = "";
             LB_RoomName.Text = "";
         }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            id_room.Text = "";
+            LB_roomPrice.Text = "";
+            LB_RoomName.Text = "";
+        }
     }
 }

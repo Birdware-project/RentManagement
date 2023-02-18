@@ -135,5 +135,14 @@ namespace moneyhome
             dataview_user.DataSource = dt;
             dataview_user.Sort(dataview_user.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
         }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            id_user.Text = "";
+            name_user.Text = "";
+            CB_sex.Text = "";
+            phone_user.Text = "";
+            password_user.Text = "";
+        }
     }
 }

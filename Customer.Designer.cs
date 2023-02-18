@@ -321,9 +321,9 @@
             // Btn_clear
             // 
             this.Btn_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_clear.BackColor = System.Drawing.Color.Black;
+            this.Btn_clear.BackColor = System.Drawing.Color.SteelBlue;
             this.Btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_clear.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Btn_clear.ForeColor = System.Drawing.Color.Black;
             this.Btn_clear.Location = new System.Drawing.Point(233, 210);
             this.Btn_clear.Name = "Btn_clear";
             this.Btn_clear.Size = new System.Drawing.Size(99, 40);

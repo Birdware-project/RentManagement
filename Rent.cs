@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
 namespace moneyhome
 {
     public partial class Rent : Form
@@ -21,9 +16,9 @@ namespace moneyhome
 
         private int _userID;
 
-        public Rent(string UserID,string connectionSource)
+        public Rent(string UserID, string connectionSource)
         {
-            connectionString= connectionSource;
+            connectionString = connectionSource;
             InitializeComponent();
             showData_customer();
             showData_Rent();
@@ -31,6 +26,7 @@ namespace moneyhome
 
             LB_userID.Text = UserID;
             _userID = Int32.Parse(UserID);
+            datagv_customer.DefaultCellStyle.ForeColor = Color.Black;
         }
 
         private void Room_Load(object sender, EventArgs e)
@@ -107,7 +103,7 @@ namespace moneyhome
                 _vehicle = 1;
             }
             var x = 0;
-            while ( x < list.Items.Count)
+            while (x < list.Items.Count)
             {
                 _roomate += list.Items[x] + ",";
                 x++;
@@ -119,7 +115,7 @@ namespace moneyhome
             cmd.Parameters.Add("@RoomID", SqlDbType.VarChar, 250).Value = CB_roomID.Text;
             cmd.Parameters.Add("@istrash", SqlDbType.Int).Value = _trash;
             cmd.Parameters.Add("@isvehicle", SqlDbType.Int).Value = _vehicle;
-            cmd.Parameters.Add("@roomate", SqlDbType.VarChar,250).Value = _roomate;
+            cmd.Parameters.Add("@roomate", SqlDbType.VarChar, 250).Value = _roomate;
             cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = _userID;
             cnn.Open();
             cmd.Connection = cnn;
@@ -175,12 +171,12 @@ namespace moneyhome
                 {
                     this.RentID.Text = kd["ID"].ToString();
                     this.CB_roomID.Text = kd["Roomid"].ToString();
-                    this.check_trash.Checked = Convert.ToInt32(kd["isTrash"].ToString()) == 1?true:false;
+                    this.check_trash.Checked = Convert.ToInt32(kd["isTrash"].ToString()) == 1 ? true : false;
                     this.check_vehicle.Checked = Convert.ToInt32(kd["isSpace"].ToString()) == 1 ? true : false;
                     this.LB_userID.Text = kd["UserID"].ToString();
 
                     String str = kd["Roomate"].ToString();
-                    char[] spearator = { ','};
+                    char[] spearator = { ',' };
                     // Using the Method
                     String[] strlist = str.Split(spearator,
                            StringSplitOptions.None);
@@ -188,7 +184,7 @@ namespace moneyhome
                     {
                         this.list.Items.Add(s);
                     }
-                    
+
 
                 }
                 showData_Rent();
@@ -232,7 +228,7 @@ namespace moneyhome
             cmd.Parameters.Add("@RentID", SqlDbType.Int).Value = RentID.Text;
             cmd.Parameters.Add("@trash", SqlDbType.Int).Value = _trash;
             cmd.Parameters.Add("@vehicle", SqlDbType.Int).Value = _vehicle;
-            cmd.Parameters.Add("@roomate", SqlDbType.VarChar,250).Value = _roomate;
+            cmd.Parameters.Add("@roomate", SqlDbType.VarChar, 250).Value = _roomate;
             cnn.Open();
             cmd.Connection = cnn;
             cmd.ExecuteNonQuery();
@@ -249,14 +245,14 @@ namespace moneyhome
 
         private void edcAndWaterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            edc_water edc = new edc_water(connectionString,_userID.ToString());
+            edc_water edc = new edc_water(connectionString, _userID.ToString());
             edc.Show();
-            
+
         }
 
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer customer = new Customer(connectionString,this._userID.ToString());
+            Customer customer = new Customer(connectionString, this._userID.ToString());
             customer.Show();
             showData_customer();
         }
@@ -267,16 +263,49 @@ namespace moneyhome
             {
                 if (room.ShowDialog(this) == DialogResult.Cancel)
                 {
-                    this.Close();
-                    new Rent(_userID.ToString(), connectionString).Show();
+                    CB_roomID.Items.Clear();
+                    list_ID_Room();
                 }
             }
         }
 
         private void invoiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            invoice invoice = new invoice(connectionString,this._userID.ToString());
+            invoice invoice = new invoice(connectionString, this._userID.ToString());
             invoice.Show();
+        }
+
+        private void CB_roomID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _getRoom_price();
+        }
+        private void _getRoom_price()
+        {
+            cnn = new SqlConnection(connectionString);
+            cmd = new SqlCommand();
+            cmd.CommandText = "select price from Room where ID=@ID";
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = this.CB_roomID.Text;
+            cmd.Connection = cnn;
+            cnn.Open();
+            SqlDataReader kd;
+
+            kd = cmd.ExecuteReader();
+            while (kd.Read())
+            {
+                this.roomPrice.Text = kd["price"].ToString();
+            }
+            cnn.Close();
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            RentID.Text = "";
+            CB_roomID.Text = "";
+            roomPrice.Text = "";
+            list.Items.Clear();
+            check_trash.Checked = false;
+            check_vehicle.Checked = false;
+            label_member.Text = "";
         }
     }
 }

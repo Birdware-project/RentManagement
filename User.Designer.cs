@@ -49,6 +49,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CB_sex = new System.Windows.Forms.ComboBox();
+            this.btn_clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataview_user)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -186,7 +187,7 @@
             this.bt_insert.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_insert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_insert.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bt_insert.Location = new System.Drawing.Point(34, 121);
+            this.bt_insert.Location = new System.Drawing.Point(285, 122);
             this.bt_insert.Name = "bt_insert";
             this.bt_insert.Size = new System.Drawing.Size(99, 42);
             this.bt_insert.TabIndex = 17;
@@ -214,7 +215,7 @@
             this.bt_update.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_update.ForeColor = System.Drawing.SystemColors.Control;
-            this.bt_update.Location = new System.Drawing.Point(146, 121);
+            this.bt_update.Location = new System.Drawing.Point(397, 122);
             this.bt_update.Name = "bt_update";
             this.bt_update.Size = new System.Drawing.Size(110, 42);
             this.bt_update.TabIndex = 19;
@@ -228,7 +229,7 @@
             this.bt_delete.BackColor = System.Drawing.Color.Red;
             this.bt_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_delete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bt_delete.Location = new System.Drawing.Point(274, 121);
+            this.bt_delete.Location = new System.Drawing.Point(645, 122);
             this.bt_delete.Name = "bt_delete";
             this.bt_delete.Size = new System.Drawing.Size(102, 42);
             this.bt_delete.TabIndex = 20;
@@ -291,6 +292,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_clear);
             this.panel1.Controls.Add(this.CB_sex);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
@@ -319,6 +321,20 @@
             this.CB_sex.Name = "CB_sex";
             this.CB_sex.Size = new System.Drawing.Size(69, 33);
             this.CB_sex.TabIndex = 23;
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_clear.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clear.ForeColor = System.Drawing.Color.Black;
+            this.btn_clear.Location = new System.Drawing.Point(521, 122);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(110, 42);
+            this.btn_clear.TabIndex = 24;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // User
             // 
@@ -370,5 +386,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox CB_sex;
+        private System.Windows.Forms.Button btn_clear;
     }
 }

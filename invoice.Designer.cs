@@ -65,10 +65,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btn_print = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_excel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -529,6 +529,20 @@
             this.panel1.Size = new System.Drawing.Size(463, 423);
             this.panel1.TabIndex = 59;
             // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button5.BackColor = System.Drawing.Color.SteelBlue;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.Black;
+            this.button5.Location = new System.Drawing.Point(228, 366);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(105, 37);
+            this.button5.TabIndex = 59;
+            this.button5.Text = "Clear";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -553,32 +567,18 @@
             this.label12.TabIndex = 61;
             this.label12.Text = "management";
             // 
-            // button4
+            // btn_excel
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button4.BackColor = System.Drawing.Color.SteelBlue;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(726, 363);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(107, 37);
-            this.button4.TabIndex = 62;
-            this.button4.Text = "Excel";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button5.BackColor = System.Drawing.Color.SteelBlue;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(228, 366);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(105, 37);
-            this.button5.TabIndex = 59;
-            this.button5.Text = "clear";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btn_excel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_excel.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_excel.ForeColor = System.Drawing.Color.White;
+            this.btn_excel.Location = new System.Drawing.Point(726, 363);
+            this.btn_excel.Name = "btn_excel";
+            this.btn_excel.Size = new System.Drawing.Size(107, 37);
+            this.btn_excel.TabIndex = 62;
+            this.btn_excel.Text = "Excel";
+            this.btn_excel.UseVisualStyleBackColor = false;
             // 
             // invoice
             // 
@@ -587,7 +587,7 @@
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(982, 694);
             this.ControlBox = false;
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btn_excel);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -660,7 +660,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_excel;
         private System.Windows.Forms.Button button5;
     }
 }

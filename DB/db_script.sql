@@ -27,8 +27,8 @@ create table invoice (
 	water_price varchar(255),
 	space_price varchar(255),
 	trash_price varchar(255),
-	Date date,
 	Room_price varchar(255),
+	Date date,
 	Total varchar(255)
 );
 create table edc_water(

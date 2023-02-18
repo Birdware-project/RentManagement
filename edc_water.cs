@@ -186,5 +186,16 @@ namespace moneyhome
         {
             _edc_waterOldnumber();
         }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            LB_id.Text = "";
+            CB_roomID.Text = "";
+            date_time.Text = "";
+            TB_old_edc.Text = "0";
+            TB_old_wat.Text = "0";
+            TB_new_edc.Text = "0";
+            TB_new_wat.Text = "0";
+        }
     }
 }

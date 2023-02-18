@@ -51,6 +51,7 @@
             this.LB_id = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.LB_userID = new System.Windows.Forms.Label();
@@ -149,7 +150,7 @@
             this.bt_insert.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_insert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_insert.ForeColor = System.Drawing.Color.White;
-            this.bt_insert.Location = new System.Drawing.Point(31, 176);
+            this.bt_insert.Location = new System.Drawing.Point(195, 182);
             this.bt_insert.Name = "bt_insert";
             this.bt_insert.Size = new System.Drawing.Size(106, 36);
             this.bt_insert.TabIndex = 20;
@@ -177,7 +178,7 @@
             this.bt_update.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_update.ForeColor = System.Drawing.Color.White;
-            this.bt_update.Location = new System.Drawing.Point(157, 176);
+            this.bt_update.Location = new System.Drawing.Point(321, 182);
             this.bt_update.Name = "bt_update";
             this.bt_update.Size = new System.Drawing.Size(115, 36);
             this.bt_update.TabIndex = 22;
@@ -327,6 +328,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_clear);
             this.panel1.Controls.Add(this.TB_old_wat);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label11);
@@ -347,6 +349,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(758, 231);
             this.panel1.TabIndex = 41;
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_clear.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clear.ForeColor = System.Drawing.Color.Black;
+            this.btn_clear.Location = new System.Drawing.Point(453, 182);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(115, 36);
+            this.btn_clear.TabIndex = 40;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // label2
             // 
@@ -438,5 +454,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label LB_userID;
+        private System.Windows.Forms.Button btn_clear;
     }
 }

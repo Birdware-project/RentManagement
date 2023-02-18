@@ -82,18 +82,18 @@ namespace moneyhome
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
             myhome.CommandText = "insert into invoice(" +
-                "Room_ID,User_ID,Edc_ID,EDC_Price,Water_Price,isVehicle,isTrash,Date,Room_Money)" +
+                "RoomID,UserID,Edc_waterID,EDC_Price,Water_Price,space_price,Trash_price,Date,Room_price)" +
                 "values(" +
-                "@roomID,@userID,@edc_price,@water_price,@vehicle_price,@trash_price,@date_time,@money_room,@edc)";
+                "@roomID,@userID,@edcID,@edc_price,@water_price,@vehicle_price,@trash_price,@date_time,@money_room)";
             myhome.Parameters.Add("@roomID", SqlDbType.Int).Value = CB_roomid.Text;
             myhome.Parameters.Add("@userID", SqlDbType.Int).Value = Lb_userID.Text;
+            myhome.Parameters.Add("@edcID", SqlDbType.Int).Value = cb_edc.Text;
             myhome.Parameters.Add("@edc_price", SqlDbType.VarChar, 250).Value = edc_price.Text;
             myhome.Parameters.Add("@water_price", SqlDbType.VarChar,250).Value = water_price.Text;
             myhome.Parameters.Add("@vehicle_price", SqlDbType.VarChar,250).Value = vehicle_price.Text;
             myhome.Parameters.Add("@trash_price", SqlDbType.VarChar,250).Value = trash_price.Text;
             myhome.Parameters.Add("@date_time", SqlDbType.Date).Value = date_time.Value.ToString("yyyy-MM-dd");
             myhome.Parameters.Add("@money_room", SqlDbType.VarChar, 250).Value = money_room.Text;
-            myhome.Parameters.Add("@edc", SqlDbType.VarChar, 250).Value = cb_edc.Text;
 
             cnn.Open();
             myhome.Connection = cnn;
@@ -125,7 +125,7 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select * from Rent a join Room b where a.ID=@ID";
+            myhome.CommandText = "select * from Rent a join Room b on a.roomid = b.id where a.ID=@ID";
             myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.CB_roomid.Text;
             myhome.Connection = cnn;
             cnn.Open();
@@ -135,8 +135,8 @@ namespace moneyhome
             while (kd.Read())
             {
                 this.money_room.Text = (kd["Price"].ToString());
-                this.trash_service.Text = (kd["Trash_Service"].ToString());
-                this.vehicle_space.Text = (kd["Vehicle_Space"].ToString());
+                this.trash_service.Text = (kd["isTrash"].ToString());
+                this.vehicle_space.Text = (kd["isSpace"].ToString());
             }
 
         }
@@ -144,7 +144,7 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select * from Tb_edcandwater where ID =@ID";
+            myhome.CommandText = "select * from edc_water where ID =@ID";
             myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.cb_edc.Text;
             myhome.Connection = cnn;
             cnn.Open();
@@ -153,8 +153,8 @@ namespace moneyhome
             kd = myhome.ExecuteReader();
             while (kd.Read())
             {
-                this.total_num_edc.Text = kd["EDC_Values"].ToString();
-                this.total_num_water.Text = kd["Water_Valuse"].ToString();
+                this.total_num_edc.Text = (Int32.Parse(kd["EDC_new"].ToString()) - Int32.Parse(kd["EDC_old"].ToString())).ToString();
+                this.total_num_water.Text = (Int32.Parse(kd["water_new"].ToString()) - Int32.Parse(kd["water_old"].ToString())).ToString(); ;
             }
         }
 

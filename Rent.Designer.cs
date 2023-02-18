@@ -62,6 +62,7 @@
             this.LB_userID = new System.Windows.Forms.Label();
             this.RentID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.CB_roomID = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -203,7 +204,7 @@
             this.bt_update.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_update.ForeColor = System.Drawing.Color.White;
-            this.bt_update.Location = new System.Drawing.Point(120, 270);
+            this.bt_update.Location = new System.Drawing.Point(115, 270);
             this.bt_update.Name = "bt_update";
             this.bt_update.Size = new System.Drawing.Size(109, 37);
             this.bt_update.TabIndex = 27;
@@ -227,11 +228,17 @@
             // 
             // datagv_customer
             // 
+            this.datagv_customer.AllowUserToAddRows = false;
+            this.datagv_customer.AllowUserToDeleteRows = false;
             this.datagv_customer.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.datagv_customer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagv_customer.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.datagv_customer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.datagv_customer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.datagv_customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagv_customer.Location = new System.Drawing.Point(339, 99);
             this.datagv_customer.Name = "datagv_customer";
+            this.datagv_customer.ReadOnly = true;
             this.datagv_customer.RowHeadersWidth = 51;
             this.datagv_customer.RowTemplate.Height = 24;
             this.datagv_customer.Size = new System.Drawing.Size(318, 159);
@@ -275,7 +282,7 @@
             // add_list
             // 
             this.add_list.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.add_list.Location = new System.Drawing.Point(122, 37);
+            this.add_list.Location = new System.Drawing.Point(131, 37);
             this.add_list.Multiline = true;
             this.add_list.Name = "add_list";
             this.add_list.Size = new System.Drawing.Size(88, 37);
@@ -313,6 +320,7 @@
             // 
             this.roomPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.roomPrice.Enabled = false;
+            this.roomPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomPrice.Location = new System.Drawing.Point(193, 89);
             this.roomPrice.Multiline = true;
             this.roomPrice.Name = "roomPrice";
@@ -455,6 +463,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_clear);
             this.panel1.Controls.Add(this.CB_roomID);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.RentID);
@@ -475,6 +484,20 @@
             this.panel1.Size = new System.Drawing.Size(1050, 328);
             this.panel1.TabIndex = 45;
             // 
+            // btn_clear
+            // 
+            this.btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_clear.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clear.ForeColor = System.Drawing.Color.Black;
+            this.btn_clear.Location = new System.Drawing.Point(232, 270);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(109, 37);
+            this.btn_clear.TabIndex = 48;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
             // CB_roomID
             // 
             this.CB_roomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -483,6 +506,7 @@
             this.CB_roomID.Name = "CB_roomID";
             this.CB_roomID.Size = new System.Drawing.Size(139, 28);
             this.CB_roomID.TabIndex = 47;
+            this.CB_roomID.SelectedIndexChanged += new System.EventHandler(this.CB_roomID_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -614,5 +638,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox CB_roomID;
+        private System.Windows.Forms.Button btn_clear;
     }
 }

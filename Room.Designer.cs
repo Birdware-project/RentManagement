@@ -42,6 +42,7 @@
             this.Bt_filter = new System.Windows.Forms.Button();
             this.TB_FilterSearch = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataview_room1)).BeginInit();
@@ -121,7 +122,7 @@
             this.bt_Insert.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_Insert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Insert.ForeColor = System.Drawing.Color.White;
-            this.bt_Insert.Location = new System.Drawing.Point(15, 182);
+            this.bt_Insert.Location = new System.Drawing.Point(166, 182);
             this.bt_Insert.Name = "bt_Insert";
             this.bt_Insert.Size = new System.Drawing.Size(147, 35);
             this.bt_Insert.TabIndex = 20;
@@ -149,7 +150,7 @@
             this.bt_update.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_update.ForeColor = System.Drawing.Color.White;
-            this.bt_update.Location = new System.Drawing.Point(174, 184);
+            this.bt_update.Location = new System.Drawing.Point(325, 183);
             this.bt_update.Name = "bt_update";
             this.bt_update.Size = new System.Drawing.Size(147, 33);
             this.bt_update.TabIndex = 22;
@@ -209,6 +210,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_clear);
             this.panel1.Controls.Add(this.LB_RoomName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.LB_roomPrice);
@@ -221,6 +223,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(758, 234);
             this.panel1.TabIndex = 27;
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_clear.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clear.ForeColor = System.Drawing.Color.Black;
+            this.btn_clear.Location = new System.Drawing.Point(488, 183);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(147, 33);
+            this.btn_clear.TabIndex = 25;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // label3
             // 
@@ -289,5 +305,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_clear;
     }
 }
