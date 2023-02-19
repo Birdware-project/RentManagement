@@ -1,8 +1,11 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+
 
 namespace moneyhome
 {
@@ -297,7 +300,38 @@ namespace moneyhome
 
         private void btn_excel_Click(object sender, EventArgs e)
         {
-
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV files|*.csv" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (var textWriter = File.CreateText(sfd.FileName))
+                        {
+                            using (CsvWriter csv = new CsvWriter(textWriter, System.Globalization.CultureInfo.CurrentCulture))
+                            {
+                                DataTable dt = this.dt;
+                                // Write columns
+                                foreach (DataColumn column in dt.Columns)
+                                    csv.WriteField(column.ColumnName);
+                                csv.NextRecord();
+                                // Write row values
+                                foreach (DataRow row in dt.Rows)
+                                {
+                                    for (var i = 0; i < dt.Columns.Count; i++)
+                                        csv.WriteField(row[i]);
+                                    csv.NextRecord();
+                                }
+                            }
+                        }
+                        MessageBox.Show("You have successfully exported the file.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
