@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace moneyhome
@@ -189,6 +190,7 @@ namespace moneyhome
                 this.cb_edc.Text = kd["Edc_waterID"].ToString();
             }
             showData_invoice();
+            _edc();
             cnn.Close();
         }
 
@@ -241,7 +243,8 @@ namespace moneyhome
             var _trashExpense = (float.Parse(LB_is_trash.Text) * float.Parse(trash_price.Text)).ToString();
             var _spaceExpense = (float.Parse(LB_is_space.Text)*float.Parse(space_price.Text)).ToString();
             ViewInvoice viewInvoice = new ViewInvoice(
-                LB_invoiceID.Text,water_price.Text,total_num_water.Text,
+                LB_invoiceID.Text,Lb_userID.Text,
+                water_price.Text,total_num_water.Text,
                 edc_price.Text,total_num_edc.Text,
                 _trashExpense,_spaceExpense,room_price.Text
                 );
@@ -270,7 +273,11 @@ namespace moneyhome
             if ((CB_roomid.Text).Length == 0 || 
                 (water_price.Text).Length ==0)
             {
+                btn_insert.BackColor = Color.DarkGray;
                 btn_insert.Enabled= false;
+                
+                btn_update.Enabled= false;
+                btn_update.BackColor = Color.DarkGray;
             }
             else
             {
@@ -286,6 +293,11 @@ namespace moneyhome
         private void water_price_TextChanged(object sender, EventArgs e)
         {
             _checkTextNullInTexboxt();
+        }
+
+        private void btn_excel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

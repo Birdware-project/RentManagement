@@ -45,7 +45,7 @@
             this.water_price = new System.Windows.Forms.TextBox();
             this.edc_price = new System.Windows.Forms.TextBox();
             this.btn_insert = new System.Windows.Forms.Button();
-            this.bt_update = new System.Windows.Forms.Button();
+            this.btn_update = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.CB_roomid = new System.Windows.Forms.ComboBox();
             this.room_price = new System.Windows.Forms.Label();
@@ -275,19 +275,19 @@
             this.btn_insert.UseVisualStyleBackColor = false;
             this.btn_insert.Click += new System.EventHandler(this.button3_Click);
             // 
-            // bt_update
+            // btn_update
             // 
-            this.bt_update.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bt_update.BackColor = System.Drawing.Color.SteelBlue;
-            this.bt_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_update.ForeColor = System.Drawing.Color.White;
-            this.bt_update.Location = new System.Drawing.Point(118, 366);
-            this.bt_update.Name = "bt_update";
-            this.bt_update.Size = new System.Drawing.Size(105, 37);
-            this.bt_update.TabIndex = 27;
-            this.bt_update.Text = "Update";
-            this.bt_update.UseVisualStyleBackColor = false;
-            this.bt_update.Click += new System.EventHandler(this.bt_update_Click);
+            this.btn_update.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_update.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_update.ForeColor = System.Drawing.Color.White;
+            this.btn_update.Location = new System.Drawing.Point(118, 366);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(105, 37);
+            this.btn_update.TabIndex = 27;
+            this.btn_update.Text = "Update";
+            this.btn_update.UseVisualStyleBackColor = false;
+            this.btn_update.Click += new System.EventHandler(this.bt_update_Click);
             // 
             // label10
             // 
@@ -319,7 +319,7 @@
             this.room_price.AutoSize = true;
             this.room_price.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.room_price.ForeColor = System.Drawing.Color.Black;
-            this.room_price.Location = new System.Drawing.Point(876, 137);
+            this.room_price.Location = new System.Drawing.Point(886, 137);
             this.room_price.Name = "room_price";
             this.room_price.Size = new System.Drawing.Size(26, 36);
             this.room_price.TabIndex = 34;
@@ -354,7 +354,7 @@
             this.total_num_edc.AutoSize = true;
             this.total_num_edc.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total_num_edc.ForeColor = System.Drawing.Color.Black;
-            this.total_num_edc.Location = new System.Drawing.Point(876, 173);
+            this.total_num_edc.Location = new System.Drawing.Point(886, 173);
             this.total_num_edc.Name = "total_num_edc";
             this.total_num_edc.Size = new System.Drawing.Size(26, 36);
             this.total_num_edc.TabIndex = 38;
@@ -378,7 +378,7 @@
             this.total_num_water.AutoSize = true;
             this.total_num_water.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total_num_water.ForeColor = System.Drawing.Color.Black;
-            this.total_num_water.Location = new System.Drawing.Point(876, 209);
+            this.total_num_water.Location = new System.Drawing.Point(886, 209);
             this.total_num_water.Name = "total_num_water";
             this.total_num_water.Size = new System.Drawing.Size(26, 36);
             this.total_num_water.TabIndex = 40;
@@ -402,7 +402,7 @@
             this.LB_is_space.AutoSize = true;
             this.LB_is_space.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_is_space.ForeColor = System.Drawing.Color.Black;
-            this.LB_is_space.Location = new System.Drawing.Point(876, 246);
+            this.LB_is_space.Location = new System.Drawing.Point(886, 246);
             this.LB_is_space.Name = "LB_is_space";
             this.LB_is_space.Size = new System.Drawing.Size(26, 36);
             this.LB_is_space.TabIndex = 46;
@@ -426,7 +426,7 @@
             this.LB_is_trash.AutoSize = true;
             this.LB_is_trash.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_is_trash.ForeColor = System.Drawing.Color.Black;
-            this.LB_is_trash.Location = new System.Drawing.Point(876, 282);
+            this.LB_is_trash.Location = new System.Drawing.Point(886, 282);
             this.LB_is_trash.Name = "LB_is_trash";
             this.LB_is_trash.Size = new System.Drawing.Size(26, 36);
             this.LB_is_trash.TabIndex = 48;
@@ -522,7 +522,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.edc_price);
-            this.panel1.Controls.Add(this.bt_update);
+            this.panel1.Controls.Add(this.btn_update);
             this.panel1.Controls.Add(this.date_time);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.btn_insert);
@@ -581,6 +581,7 @@
             this.btn_excel.TabIndex = 62;
             this.btn_excel.Text = "Excel";
             this.btn_excel.UseVisualStyleBackColor = false;
+            this.btn_excel.Click += new System.EventHandler(this.btn_excel_Click);
             // 
             // invoice
             // 
@@ -640,7 +641,7 @@
         private System.Windows.Forms.TextBox water_price;
         private System.Windows.Forms.TextBox edc_price;
         private System.Windows.Forms.Button btn_insert;
-        private System.Windows.Forms.Button bt_update;
+        private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox CB_roomid;
         private System.Windows.Forms.Label room_price;

@@ -35,7 +35,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Total_Price = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LB_userID = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -48,6 +48,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.lb_vehicleExpense = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.LB_roomid = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -114,21 +116,21 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(35, 109);
+            this.label7.Location = new System.Drawing.Point(39, 543);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 16);
+            this.label7.Size = new System.Drawing.Size(75, 16);
             this.label7.TabIndex = 6;
-            this.label7.Text = "USER NAME :";
+            this.label7.Text = "Printer ID:";
             // 
-            // label8
+            // LB_userID
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(145, 109);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 16);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "................";
+            this.LB_userID.AutoSize = true;
+            this.LB_userID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_userID.Location = new System.Drawing.Point(149, 543);
+            this.LB_userID.Name = "LB_userID";
+            this.LB_userID.Size = new System.Drawing.Size(71, 16);
+            this.LB_userID.TabIndex = 7;
+            this.LB_userID.Text = "................";
             // 
             // label9
             // 
@@ -250,11 +252,33 @@
             this.label21.TabIndex = 19;
             this.label21.Text = "VEHICLE  SPACE";
             // 
+            // LB_roomid
+            // 
+            this.LB_roomid.AutoSize = true;
+            this.LB_roomid.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_roomid.Location = new System.Drawing.Point(145, 102);
+            this.LB_roomid.Name = "LB_roomid";
+            this.LB_roomid.Size = new System.Drawing.Size(71, 16);
+            this.LB_roomid.TabIndex = 24;
+            this.LB_roomid.Text = "................";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(35, 102);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(60, 16);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "Room : ";
+            // 
             // ViewInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 695);
+            this.Controls.Add(this.LB_roomid);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.lb_vehicleExpense);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.lb_trashExpense);
@@ -267,7 +291,7 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LB_userID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Total_Price);
             this.Controls.Add(this.label5);
@@ -277,7 +301,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ViewInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ViewInvoice";
+            this.Text = "INVOICE";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,7 +316,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label Total_Price;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label LB_userID;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -305,5 +329,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label lb_vehicleExpense;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label LB_roomid;
+        private System.Windows.Forms.Label label15;
     }
 }
