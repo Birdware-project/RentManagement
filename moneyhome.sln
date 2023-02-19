@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentMangement", "RentMangement.csproj", "{0A53AA56-8904-47C7-A795-65B1CDDD61F9}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RentManagementSetup", "RentManagementSetup\RentManagementSetup.vdproj", "{C27A870D-B121-4378-B0F0-8EC2882A61A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{0A53AA56-8904-47C7-A795-65B1CDDD61F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A53AA56-8904-47C7-A795-65B1CDDD61F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A53AA56-8904-47C7-A795-65B1CDDD61F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27A870D-B121-4378-B0F0-8EC2882A61A3}.Debug|Any CPU.ActiveCfg = Release
+		{C27A870D-B121-4378-B0F0-8EC2882A61A3}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
