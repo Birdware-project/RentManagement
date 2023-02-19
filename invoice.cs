@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.IO;
+using System.Windows.Forms;
 
 namespace moneyhome
 {
@@ -20,7 +13,7 @@ namespace moneyhome
         SqlDataAdapter adapter;
         DataTable dt;
         private string _userID;
-        public invoice(string connection,string userID)
+        public invoice(string connection, string userID)
         {
             InitializeComponent();
             connectionString = connection;
@@ -29,6 +22,7 @@ namespace moneyhome
             showData_invoice();
             _ListRoomId();
             _ListEDC();
+            _checkTextNullInTexboxt();
 
         }
 
@@ -82,18 +76,20 @@ namespace moneyhome
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
             myhome.CommandText = "insert into invoice(" +
-                "RoomID,UserID,Edc_waterID,EDC_Price,Water_Price,space_price,Trash_price,Date,Room_price)" +
+                "RoomID,UserID,Edc_waterID,EDC_Price,Water_Price,space_price,Trash_price,Date,Room_price,isSpace,isTrash)" +
                 "values(" +
-                "@roomID,@userID,@edcID,@edc_price,@water_price,@vehicle_price,@trash_price,@date_time,@money_room)";
+                "@roomID,@userID,@edcID,@edc_price,@water_price,@vehicle_price,@trash_price,@date_time,@money_room,@isspace,@istrash)";
             myhome.Parameters.Add("@roomID", SqlDbType.Int).Value = CB_roomid.Text;
             myhome.Parameters.Add("@userID", SqlDbType.Int).Value = Lb_userID.Text;
             myhome.Parameters.Add("@edcID", SqlDbType.Int).Value = cb_edc.Text;
             myhome.Parameters.Add("@edc_price", SqlDbType.VarChar, 250).Value = edc_price.Text;
-            myhome.Parameters.Add("@water_price", SqlDbType.VarChar,250).Value = water_price.Text;
-            myhome.Parameters.Add("@vehicle_price", SqlDbType.VarChar,250).Value = vehicle_price.Text;
-            myhome.Parameters.Add("@trash_price", SqlDbType.VarChar,250).Value = trash_price.Text;
+            myhome.Parameters.Add("@water_price", SqlDbType.VarChar, 250).Value = water_price.Text;
+            myhome.Parameters.Add("@vehicle_price", SqlDbType.VarChar, 250).Value = space_price.Text;
+            myhome.Parameters.Add("@trash_price", SqlDbType.VarChar, 250).Value = trash_price.Text;
             myhome.Parameters.Add("@date_time", SqlDbType.Date).Value = date_time.Value.ToString("yyyy-MM-dd");
-            myhome.Parameters.Add("@money_room", SqlDbType.VarChar, 250).Value = money_room.Text;
+            myhome.Parameters.Add("@money_room", SqlDbType.VarChar, 250).Value = room_price.Text;
+            myhome.Parameters.Add("@istrash", SqlDbType.Int).Value = LB_is_trash.Text;
+            myhome.Parameters.Add("@isspace", SqlDbType.Int).Value = LB_is_space.Text;
 
             cnn.Open();
             myhome.Connection = cnn;
@@ -104,13 +100,13 @@ namespace moneyhome
             Lb_userID.Text = "";
             CB_roomid.Text = "";
             edc_price.Text = "";
-            vehicle_price.Text = "";
+            space_price.Text = "";
             date_time.Text = "";
-            money_room.Text = "";
+            room_price.Text = "";
             total_num_water.Text = "";
             total_num_edc.Text = "";
-            vehicle_space.Text = "";
-            trash_service.Text = "";
+            LB_is_space.Text = "";
+            LB_is_trash.Text = "";
             cb_edc.Text = "";
             trash_price.Text = "";
             water_price.Text = "";
@@ -134,9 +130,9 @@ namespace moneyhome
             kd = myhome.ExecuteReader();
             while (kd.Read())
             {
-                this.money_room.Text = (kd["Price"].ToString());
-                this.trash_service.Text = (kd["isTrash"].ToString());
-                this.vehicle_space.Text = (kd["isSpace"].ToString());
+                this.room_price.Text = (kd["Price"].ToString());
+                this.LB_is_trash.Text = (kd["isTrash"].ToString());
+                this.LB_is_space.Text = (kd["isSpace"].ToString());
             }
 
         }
@@ -167,60 +163,50 @@ namespace moneyhome
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select * from Tb_Invoice where Invoice_ID=@ID";
-            myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.TB_filter.Text;
+            myhome.CommandText = "select * from Invoice where ID=@ID";
+            myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.TB_filterSearch.Text;
             myhome.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
-            try
-            {
-                kd = myhome.ExecuteReader();
-                while (kd.Read())
-                {
-                    this.LB_invoiceID.Text = kd["Invoice_ID"].ToString();
-                    this.Lb_userID.Text = kd["User_ID"].ToString();
-                    this.edc_price.Text = kd["EDC_Price"].ToString();
-                    this.water_price.Text = kd["Water_Price"].ToString();
-                    this.water_price.Text = kd["Water_Price"].ToString();
-                    this.vehicle_price.Text = kd["Vehicle_Price"].ToString();
-                    this.trash_price.Text = kd["Trash_Price"].ToString();
-                    this.date_time.Text = kd["Date"].ToString();
-                    this.money_room.Text = kd["Room_Money"].ToString();
-                    this.total_num_water.Text = (float.Parse(kd["TotalMoney_Water"].ToString()) / float.Parse(water_price.Text)).ToString();
-                    this.total_num_edc.Text = (float.Parse(kd["TotalMoney_EDC"].ToString()) / float.Parse(water_price.Text)).ToString();
 
-                    this.CB_roomid.Text = kd["Room_ID"].ToString();
-                    this.cb_edc.Text = kd["Edc_ID"].ToString();
-                    
-                }
-                showData_invoice();
-            }
-            catch
+            kd = myhome.ExecuteReader();
+            while (kd.Read())
             {
-                MessageBox.Show("Success!!");
-            }
-            finally
-            {
-                cnn.Close();
+                this.LB_invoiceID.Text = kd["ID"].ToString();
+                this.Lb_userID.Text = kd["UserID"].ToString();
+                this.edc_price.Text = kd["EDC_Price"].ToString();
+                this.water_price.Text = kd["Water_Price"].ToString();
+                this.space_price.Text = kd["space_Price"].ToString();
+                this.trash_price.Text = kd["Trash_Price"].ToString();
+                LB_is_trash.Text = kd["istrash"].ToString();
+                LB_is_space.Text = kd["isspace"].ToString();
+                this.date_time.Text = kd["Date"].ToString();
+                this.room_price.Text = kd["Room_price"].ToString();
+                //this.total_num_water.Text = (float.Parse(kd["TotalMoney_Water"].ToString()) / float.Parse(water_price.Text)).ToString();
+                //this.total_num_edc.Text = (float.Parse(kd["TotalMoney_EDC"].ToString()) / float.Parse(water_price.Text)).ToString();
 
-
+                this.CB_roomid.Text = kd["RoomID"].ToString();
+                this.cb_edc.Text = kd["Edc_waterID"].ToString();
             }
+            showData_invoice();
+            cnn.Close();
         }
 
         private void bt_update_Click(object sender, EventArgs e)
         {
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "update Tb_Invoice set Room_ID=@param2,User_ID=@param3,EDC_Price=@param4,Water_Price=@param5,Vehicle_Price=@param6,Trash_Price=@param7,Date=@param8,Room_Money=@param10,Edc_ID=@param13 where Invoice_ID=@param1";
+            myhome.CommandText = "update Invoice " +
+                "set Room_ID=@param2,User_ID=@param3,EDC_Price=@param4,Water_Price=@param5,Vehicle_Price=@param6,Trash_Price=@param7,Date=@param8,Room_Money=@param10,Edc_ID=@param13 where Invoice_ID=@param1";
             myhome.Parameters.Add("@param1", SqlDbType.Int).Value = LB_invoiceID.Text;
             myhome.Parameters.Add("@param2", SqlDbType.Int).Value = CB_roomid.Text;
             myhome.Parameters.Add("@param3", SqlDbType.Int).Value = Lb_userID.Text;
             myhome.Parameters.Add("@param4", SqlDbType.VarChar, 250).Value = edc_price.Text;
             myhome.Parameters.Add("@param5", SqlDbType.VarChar, 250).Value = water_price.Text;
-            myhome.Parameters.Add("@param6", SqlDbType.VarChar, 250).Value = vehicle_price.Text;
+            myhome.Parameters.Add("@param6", SqlDbType.VarChar, 250).Value = space_price.Text;
             myhome.Parameters.Add("@param7", SqlDbType.VarChar, 250).Value = trash_price.Text;
             myhome.Parameters.Add("@param8", SqlDbType.Date).Value = date_time.Value.ToString("yyyy-MM-dd");
-            myhome.Parameters.Add("@param10", SqlDbType.VarChar, 250).Value = money_room.Text;
+            myhome.Parameters.Add("@param10", SqlDbType.VarChar, 250).Value = room_price.Text;
             myhome.Parameters.Add("@param13", SqlDbType.VarChar, 250).Value = cb_edc.Text;
 
 
@@ -233,13 +219,13 @@ namespace moneyhome
             LB_invoiceID.Text = "";
             CB_roomid.Text = "";
             edc_price.Text = "";
-            vehicle_price.Text = "";
+            space_price.Text = "";
             date_time.Text = "";
-            money_room.Text = "";
+            room_price.Text = "";
             total_num_water.Text = "";
             total_num_edc.Text = "";
-            vehicle_space.Text = "";
-            trash_service.Text = "";
+            LB_is_space.Text = "";
+            LB_is_trash.Text = "";
             cb_edc.Text = "";
             trash_price.Text = "";
             water_price.Text = "";
@@ -247,14 +233,18 @@ namespace moneyhome
 
         private void bt_total_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            ViewInvoice viewInvoice = new ViewInvoice(this.CB_roomid.Text,
-                this.total_num_water.Text,this.water_price.Text, this.total_num_edc.Text,this.trash_price.Text,
-                this.vehicle_price.Text,this.money_room.Text,this.edc_price.Text,this.vehicle_space.Text,this.trash_service.Text);
+            var _trashExpense = (float.Parse(LB_is_trash.Text) * float.Parse(trash_price.Text)).ToString();
+            var _spaceExpense = (float.Parse(LB_is_space.Text)*float.Parse(space_price.Text)).ToString();
+            ViewInvoice viewInvoice = new ViewInvoice(
+                LB_invoiceID.Text,water_price.Text,total_num_water.Text,
+                edc_price.Text,total_num_edc.Text,
+                _trashExpense,_spaceExpense,room_price.Text
+                );
             viewInvoice.Show();
         }
 
@@ -263,17 +253,39 @@ namespace moneyhome
             LB_invoiceID.Text = "";
             CB_roomid.Text = "";
             edc_price.Text = "";
-            vehicle_price.Text = "";
+            space_price.Text = "";
             date_time.Text = DateTime.Now.ToString();
-            money_room.Text = "";
+            room_price.Text = "";
             total_num_water.Text = "";
             total_num_edc.Text = "";
-            vehicle_space.Text = "";
-            trash_service.Text = "";
+            LB_is_space.Text = "";
+            LB_is_trash.Text = "";
             cb_edc.Text = "";
             trash_price.Text = "";
             water_price.Text = "";
 
+        }
+        private void _checkTextNullInTexboxt()
+        {
+            if ((CB_roomid.Text).Length == 0 || 
+                (water_price.Text).Length ==0)
+            {
+                btn_insert.Enabled= false;
+            }
+            else
+            {
+                btn_insert.Enabled= true;
+            }
+        }
+
+        private void CB_roomid_TextChanged(object sender, EventArgs e)
+        {
+            _checkTextNullInTexboxt();
+        }
+
+        private void water_price_TextChanged(object sender, EventArgs e)
+        {
+            _checkTextNullInTexboxt();
         }
     }
 }

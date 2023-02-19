@@ -38,30 +38,30 @@
             this.bt_search = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.vehicle_price = new System.Windows.Forms.TextBox();
+            this.space_price = new System.Windows.Forms.TextBox();
             this.trash_price = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.water_price = new System.Windows.Forms.TextBox();
             this.edc_price = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_insert = new System.Windows.Forms.Button();
             this.bt_update = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.CB_roomid = new System.Windows.Forms.ComboBox();
-            this.money_room = new System.Windows.Forms.Label();
+            this.room_price = new System.Windows.Forms.Label();
             this.cb_edc = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.total_num_edc = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.total_num_water = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.vehicle_space = new System.Windows.Forms.Label();
+            this.LB_is_space = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.trash_service = new System.Windows.Forms.Label();
+            this.LB_is_trash = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.LB_invoiceID = new System.Windows.Forms.Label();
             this.Lb_userID = new System.Windows.Forms.Label();
-            this.TB_filter = new System.Windows.Forms.TextBox();
+            this.TB_filterSearch = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_print = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -196,15 +196,15 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Vehicle Price :";
             // 
-            // vehicle_price
+            // space_price
             // 
-            this.vehicle_price.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.vehicle_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicle_price.Location = new System.Drawing.Point(233, 214);
-            this.vehicle_price.Multiline = true;
-            this.vehicle_price.Name = "vehicle_price";
-            this.vehicle_price.Size = new System.Drawing.Size(121, 32);
-            this.vehicle_price.TabIndex = 14;
+            this.space_price.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.space_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.space_price.Location = new System.Drawing.Point(233, 214);
+            this.space_price.Multiline = true;
+            this.space_price.Name = "space_price";
+            this.space_price.Size = new System.Drawing.Size(121, 32);
+            this.space_price.TabIndex = 14;
             // 
             // trash_price
             // 
@@ -244,11 +244,12 @@
             // 
             this.water_price.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.water_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.water_price.Location = new System.Drawing.Point(233, 312);
+            this.water_price.Location = new System.Drawing.Point(233, 314);
             this.water_price.Multiline = true;
             this.water_price.Name = "water_price";
             this.water_price.Size = new System.Drawing.Size(121, 32);
             this.water_price.TabIndex = 19;
+            this.water_price.TextChanged += new System.EventHandler(this.water_price_TextChanged);
             // 
             // edc_price
             // 
@@ -260,19 +261,19 @@
             this.edc_price.Size = new System.Drawing.Size(121, 32);
             this.edc_price.TabIndex = 20;
             // 
-            // button3
+            // btn_insert
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.BackColor = System.Drawing.Color.SteelBlue;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(13, 366);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(99, 37);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "Insert";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_insert.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_insert.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_insert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_insert.ForeColor = System.Drawing.Color.White;
+            this.btn_insert.Location = new System.Drawing.Point(13, 366);
+            this.btn_insert.Name = "btn_insert";
+            this.btn_insert.Size = new System.Drawing.Size(99, 37);
+            this.btn_insert.TabIndex = 25;
+            this.btn_insert.Text = "Insert";
+            this.btn_insert.UseVisualStyleBackColor = false;
+            this.btn_insert.Click += new System.EventHandler(this.button3_Click);
             // 
             // bt_update
             // 
@@ -310,18 +311,19 @@
             this.CB_roomid.Size = new System.Drawing.Size(121, 24);
             this.CB_roomid.TabIndex = 33;
             this.CB_roomid.SelectedValueChanged += new System.EventHandler(this.CB_roomid_SelectedValueChanged);
+            this.CB_roomid.TextChanged += new System.EventHandler(this.CB_roomid_TextChanged);
             // 
-            // money_room
+            // room_price
             // 
-            this.money_room.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.money_room.AutoSize = true;
-            this.money_room.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.money_room.ForeColor = System.Drawing.Color.Black;
-            this.money_room.Location = new System.Drawing.Point(876, 137);
-            this.money_room.Name = "money_room";
-            this.money_room.Size = new System.Drawing.Size(26, 36);
-            this.money_room.TabIndex = 34;
-            this.money_room.Text = "0";
+            this.room_price.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.room_price.AutoSize = true;
+            this.room_price.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.room_price.ForeColor = System.Drawing.Color.Black;
+            this.room_price.Location = new System.Drawing.Point(876, 137);
+            this.room_price.Name = "room_price";
+            this.room_price.Size = new System.Drawing.Size(26, 36);
+            this.room_price.TabIndex = 34;
+            this.room_price.Text = "0";
             // 
             // cb_edc
             // 
@@ -394,17 +396,17 @@
             this.label15.TabIndex = 39;
             this.label15.Text = "Total Water Number :";
             // 
-            // vehicle_space
+            // LB_is_space
             // 
-            this.vehicle_space.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.vehicle_space.AutoSize = true;
-            this.vehicle_space.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicle_space.ForeColor = System.Drawing.Color.Black;
-            this.vehicle_space.Location = new System.Drawing.Point(876, 289);
-            this.vehicle_space.Name = "vehicle_space";
-            this.vehicle_space.Size = new System.Drawing.Size(26, 36);
-            this.vehicle_space.TabIndex = 46;
-            this.vehicle_space.Text = "0";
+            this.LB_is_space.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LB_is_space.AutoSize = true;
+            this.LB_is_space.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_is_space.ForeColor = System.Drawing.Color.Black;
+            this.LB_is_space.Location = new System.Drawing.Point(876, 246);
+            this.LB_is_space.Name = "LB_is_space";
+            this.LB_is_space.Size = new System.Drawing.Size(26, 36);
+            this.LB_is_space.TabIndex = 46;
+            this.LB_is_space.Text = "0";
             // 
             // label16
             // 
@@ -412,23 +414,23 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(710, 289);
+            this.label16.Location = new System.Drawing.Point(710, 246);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(163, 36);
             this.label16.TabIndex = 45;
             this.label16.Text = "Vehicle Space :";
             // 
-            // trash_service
+            // LB_is_trash
             // 
-            this.trash_service.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.trash_service.AutoSize = true;
-            this.trash_service.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trash_service.ForeColor = System.Drawing.Color.Black;
-            this.trash_service.Location = new System.Drawing.Point(876, 253);
-            this.trash_service.Name = "trash_service";
-            this.trash_service.Size = new System.Drawing.Size(26, 36);
-            this.trash_service.TabIndex = 48;
-            this.trash_service.Text = "0";
+            this.LB_is_trash.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LB_is_trash.AutoSize = true;
+            this.LB_is_trash.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_is_trash.ForeColor = System.Drawing.Color.Black;
+            this.LB_is_trash.Location = new System.Drawing.Point(876, 282);
+            this.LB_is_trash.Name = "LB_is_trash";
+            this.LB_is_trash.Size = new System.Drawing.Size(26, 36);
+            this.LB_is_trash.TabIndex = 48;
+            this.LB_is_trash.Text = "0";
             // 
             // label19
             // 
@@ -436,7 +438,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(710, 253);
+            this.label19.Location = new System.Drawing.Point(710, 282);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(163, 36);
             this.label19.TabIndex = 47;
@@ -464,15 +466,15 @@
             this.Lb_userID.TabIndex = 55;
             this.Lb_userID.Text = "___";
             // 
-            // TB_filter
+            // TB_filterSearch
             // 
-            this.TB_filter.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.TB_filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_filter.Location = new System.Drawing.Point(500, 406);
-            this.TB_filter.Multiline = true;
-            this.TB_filter.Name = "TB_filter";
-            this.TB_filter.Size = new System.Drawing.Size(333, 32);
-            this.TB_filter.TabIndex = 56;
+            this.TB_filterSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TB_filterSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_filterSearch.Location = new System.Drawing.Point(500, 406);
+            this.TB_filterSearch.Multiline = true;
+            this.TB_filterSearch.Name = "TB_filterSearch";
+            this.TB_filterSearch.Size = new System.Drawing.Size(333, 32);
+            this.TB_filterSearch.TabIndex = 56;
             // 
             // button1
             // 
@@ -510,7 +512,7 @@
             this.panel1.Controls.Add(this.LB_invoiceID);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btn_print);
-            this.panel1.Controls.Add(this.vehicle_price);
+            this.panel1.Controls.Add(this.space_price);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.trash_price);
@@ -523,7 +525,7 @@
             this.panel1.Controls.Add(this.bt_update);
             this.panel1.Controls.Add(this.date_time);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btn_insert);
             this.panel1.Location = new System.Drawing.Point(12, 15);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(463, 423);
@@ -592,17 +594,17 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.TB_filter);
+            this.Controls.Add(this.TB_filterSearch);
             this.Controls.Add(this.Lb_userID);
-            this.Controls.Add(this.trash_service);
+            this.Controls.Add(this.LB_is_trash);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.vehicle_space);
+            this.Controls.Add(this.LB_is_space);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.total_num_water);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.total_num_edc);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.money_room);
+            this.Controls.Add(this.room_price);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.bt_search);
             this.Controls.Add(this.button2);
@@ -631,30 +633,30 @@
         private System.Windows.Forms.Button bt_search;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox vehicle_price;
+        private System.Windows.Forms.TextBox space_price;
         private System.Windows.Forms.TextBox trash_price;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox water_price;
         private System.Windows.Forms.TextBox edc_price;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_insert;
         private System.Windows.Forms.Button bt_update;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox CB_roomid;
-        private System.Windows.Forms.Label money_room;
+        private System.Windows.Forms.Label room_price;
         private System.Windows.Forms.ComboBox cb_edc;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label total_num_edc;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label total_num_water;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label vehicle_space;
+        private System.Windows.Forms.Label LB_is_space;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label trash_service;
+        private System.Windows.Forms.Label LB_is_trash;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label LB_invoiceID;
         private System.Windows.Forms.Label Lb_userID;
-        private System.Windows.Forms.TextBox TB_filter;
+        private System.Windows.Forms.TextBox TB_filterSearch;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Panel panel1;

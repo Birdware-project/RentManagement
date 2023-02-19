@@ -25,6 +25,8 @@ create table invoice (
 	edc_waterID int,
 	edc_price varchar(255),
 	water_price varchar(255),
+	isSpace int,
+	isTrash int,
 	space_price varchar(255),
 	trash_price varchar(255),
 	Room_price varchar(255),

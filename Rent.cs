@@ -252,9 +252,13 @@ namespace moneyhome
 
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer customer = new Customer(connectionString, this._userID.ToString());
-            customer.Show();
-            showData_customer();
+            using (Customer customer = new Customer(connectionString, this._userID.ToString()))
+            {
+                if (customer.ShowDialog(this) == DialogResult.Cancel)
+                {
+                    showData_customer();
+                }
+            }
         }
 
         private void roomToolStripMenuItem_Click(object sender, EventArgs e)

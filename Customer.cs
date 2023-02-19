@@ -47,11 +47,15 @@ namespace moneyhome
             myhome = new SqlCommand();
             MemoryStream ms;
             myhome.CommandText = "INSERT INTO " +
-                "Customer(Name,Sex,Age,Phone,image) " +
-                "VALUES(@name,@sex,@age,@phone,@picture)";
+                "Customer(Name,Sex,Age,Phone) " +
+                "VALUES(@name,@sex,@age,@phone)";
 
             if (pictureBox1.Image != null)
             {
+                // if have image upload
+                myhome.CommandText = "INSERT INTO " +
+                "Customer(Name,Sex,Age,Phone,image) " +
+                "VALUES(@name,@sex,@age,@phone,@picture)";
                 //using MemoryStream:
                 ms = new MemoryStream();
                 pictureBox1.Image.Save(ms, ImageFormat.Jpeg);

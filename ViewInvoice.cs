@@ -12,15 +12,15 @@ namespace moneyhome
 {
     public partial class ViewInvoice : Form
     {
-        public ViewInvoice(string roomID,string waterPrice,string waterNumber, string edcTotalExpense,
-            string TrashExpense,string VehicleSpaceExpense,string RoomPrice,string edcPrice,string Trashservice,string VehicleSpace)
+        public ViewInvoice(string roomID,string waterPrice,string TotalwaterNumber, string edcPrice, string TotaledcNumber,
+            string TrashExpense,string VehicleSpaceExpense,string RoomPrice)
         {
             InitializeComponent();
             lb_RoomExpense.Text = RoomPrice;
-            lb_edcExpense.Text = (float.Parse(edcTotalExpense) * float.Parse(edcPrice)).ToString() ;
-            lb_waterExpense.Text = (float.Parse(waterNumber) * float.Parse(waterPrice)).ToString();
-            lb_trashExpense.Text = (float.Parse(TrashExpense) * float.Parse(Trashservice)).ToString();
-            lb_vehicleExpense.Text = (float.Parse(VehicleSpaceExpense) * float.Parse(VehicleSpace)).ToString();
+            lb_edcExpense.Text = (float.Parse(TotaledcNumber) * float.Parse(edcPrice)).ToString() ;
+            lb_waterExpense.Text = (float.Parse(TotalwaterNumber) * float.Parse(waterPrice)).ToString();
+            //lb_trashExpense.Text = (float.Parse(TrashExpense) * float.Parse(Trashservice)).ToString();
+            //lb_vehicleExpense.Text = (float.Parse(VehicleSpaceExpense) * float.Parse(SpaceService)).ToString();
             Total_Price.Text = (float.Parse(lb_RoomExpense.Text) + float.Parse(lb_edcExpense.Text) + 
                 float.Parse(lb_waterExpense.Text) + float.Parse(lb_trashExpense.Text) +
                 float.Parse(lb_vehicleExpense.Text)).ToString();
