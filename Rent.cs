@@ -55,15 +55,35 @@ namespace moneyhome
 
         private void bt_addlist_Click(object sender, EventArgs e)
         {
-            list.Items.Add(add_list.Text);
-            add_list.Text = "";
-            this.label_member.Text = list.Items.Count.ToString();
+            cnn = new SqlConnection(connectionString);
+            cmd = new SqlCommand();
+            cmd.CommandText = "select id from customer where id = "+ TB_add_list.Text;
+            cmd.Connection = cnn;
+            cnn.Open();
+            SqlDataReader kd;
+            string _customerCheckid = "";
+
+            kd = cmd.ExecuteReader();
+            while (kd.Read())
+            {
+                _customerCheckid = (kd["ID"].ToString());
+            }
+            if (!string.IsNullOrEmpty(_customerCheckid)){
+                list.Items.Add(TB_add_list.Text);
+                TB_add_list.Text = "";
+                this.label_member.Text = list.Items.Count.ToString();
+            }
+            else
+            {
+                MessageBox.Show("This Customer ID " + TB_add_list.Text +" not exist","Not found");
+            }
+            
         }
 
         private void bt_removelist_Click(object sender, EventArgs e)
         {
             list.Items.Remove(list.SelectedItem);
-            add_list.Text = "";
+            TB_add_list.Text = "";
             this.label_member.Text = list.Items.Count.ToString();
         }
 

@@ -44,7 +44,7 @@
             this.bt_filtercus = new System.Windows.Forms.Button();
             this.filter_cus = new System.Windows.Forms.TextBox();
             this.list = new System.Windows.Forms.ListBox();
-            this.add_list = new System.Windows.Forms.TextBox();
+            this.TB_add_list = new System.Windows.Forms.TextBox();
             this.bt_addlist = new System.Windows.Forms.Button();
             this.bt_removelist = new System.Windows.Forms.Button();
             this.roomPrice = new System.Windows.Forms.TextBox();
@@ -280,16 +280,16 @@
             this.list.Size = new System.Drawing.Size(296, 184);
             this.list.TabIndex = 33;
             // 
-            // add_list
+            // TB_add_list
             // 
-            this.add_list.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.add_list.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.add_list.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.add_list.Location = new System.Drawing.Point(131, 37);
-            this.add_list.Multiline = true;
-            this.add_list.Name = "add_list";
-            this.add_list.Size = new System.Drawing.Size(88, 37);
-            this.add_list.TabIndex = 35;
+            this.TB_add_list.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TB_add_list.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TB_add_list.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.TB_add_list.Location = new System.Drawing.Point(131, 37);
+            this.TB_add_list.Multiline = true;
+            this.TB_add_list.Name = "TB_add_list";
+            this.TB_add_list.Size = new System.Drawing.Size(88, 37);
+            this.TB_add_list.TabIndex = 35;
             // 
             // bt_addlist
             // 
@@ -517,7 +517,7 @@
             this.groupBox1.Controls.Add(this.bt_filtercus);
             this.groupBox1.Controls.Add(this.filter_cus);
             this.groupBox1.Controls.Add(this.bt_addlist);
-            this.groupBox1.Controls.Add(this.add_list);
+            this.groupBox1.Controls.Add(this.TB_add_list);
             this.groupBox1.Controls.Add(this.datagv_customer);
             this.groupBox1.Controls.Add(this.bt_removelist);
             this.groupBox1.Controls.Add(this.list);
@@ -618,7 +618,7 @@
         private System.Windows.Forms.Button bt_filtercus;
         private System.Windows.Forms.TextBox filter_cus;
         private System.Windows.Forms.ListBox list;
-        private System.Windows.Forms.TextBox add_list;
+        private System.Windows.Forms.TextBox TB_add_list;
         private System.Windows.Forms.Button bt_addlist;
         private System.Windows.Forms.Button bt_removelist;
         private System.Windows.Forms.TextBox roomPrice;

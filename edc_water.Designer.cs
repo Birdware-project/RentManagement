@@ -91,6 +91,7 @@
             this.date_time.Name = "date_time";
             this.date_time.Size = new System.Drawing.Size(143, 22);
             this.date_time.TabIndex = 8;
+            this.date_time.ValueChanged += new System.EventHandler(this.date_time_ValueChanged);
             // 
             // TB_FilterSearch
             // 

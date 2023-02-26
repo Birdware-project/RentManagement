@@ -198,5 +198,13 @@ namespace moneyhome
             TB_new_edc.Text = "0";
             TB_new_wat.Text = "0";
         }
+
+        private void date_time_ValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(CB_roomID.Text))
+            {
+                _edc_waterOldnumber();
+            }
+        }
     }
 }

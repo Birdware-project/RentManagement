@@ -72,7 +72,7 @@ namespace moneyhome
                     this.cb_edc.Items.Add(kd["ID"].ToString());
                 }
             }
-            
+
         }
         private void showData_invoice()
         {
@@ -114,9 +114,9 @@ namespace moneyhome
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
             myhome.CommandText = "insert into invoice(" +
-                "RoomID,UserID,Edc_waterID,EDC_Price,Water_Price,space_price,Trash_price,Date,Room_price,isSpace,isTrash)" +
-                "values(" +
-                "@roomID,@userID,@edcID,@edc_price,@water_price,@vehicle_price,@trash_price,@date_time,@money_room,@isspace,@istrash)";
+            "RoomID,UserID,Edc_waterID,EDC_Price,Water_Price,space_price,Trash_price,Date,Room_price,isSpace,isTrash)" +
+            "values(" +
+            "@roomID,@userID,@edcID,@edc_price,@water_price,@vehicle_price,@trash_price,@date_time,@money_room,@isspace,@istrash)";
             myhome.Parameters.Add("@roomID", SqlDbType.Int).Value = CB_roomid.Text;
             myhome.Parameters.Add("@userID", SqlDbType.Int).Value = Lb_userID.Text;
             myhome.Parameters.Add("@edcID", SqlDbType.Int).Value = cb_edc.Text;
@@ -182,28 +182,34 @@ namespace moneyhome
             myhome.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;
-
-            kd = myhome.ExecuteReader();
-            while (kd.Read())
+            try
             {
-                this.LB_invoiceID.Text = kd["ID"].ToString();
-                this.Lb_userID.Text = kd["UserID"].ToString();
-                this.edc_price.Text = kd["EDC_Price"].ToString();
-                this.water_price.Text = kd["Water_Price"].ToString();
-                this.space_price.Text = kd["space_Price"].ToString();
-                this.trash_price.Text = kd["Trash_Price"].ToString();
-                LB_is_trash.Text = kd["istrash"].ToString();
-                LB_is_space.Text = kd["isspace"].ToString();
-                this.date_time.Text = kd["Date"].ToString();
-                this.room_price.Text = kd["Room_price"].ToString();
-                //this.total_num_water.Text = (float.Parse(kd["TotalMoney_Water"].ToString()) / float.Parse(water_price.Text)).ToString();
-                //this.total_num_edc.Text = (float.Parse(kd["TotalMoney_EDC"].ToString()) / float.Parse(water_price.Text)).ToString();
+                kd = myhome.ExecuteReader();
+                while (kd.Read())
+                {
+                    this.LB_invoiceID.Text = kd["ID"].ToString();
+                    this.Lb_userID.Text = kd["UserID"].ToString();
+                    this.edc_price.Text = kd["EDC_Price"].ToString();
+                    this.water_price.Text = kd["Water_Price"].ToString();
+                    this.space_price.Text = kd["space_Price"].ToString();
+                    this.trash_price.Text = kd["Trash_Price"].ToString();
+                    LB_is_trash.Text = kd["istrash"].ToString();
+                    LB_is_space.Text = kd["isspace"].ToString();
+                    this.date_time.Text = kd["Date"].ToString();
+                    this.room_price.Text = kd["Room_price"].ToString();
+                    //this.total_num_water.Text = (float.Parse(kd["TotalMoney_Water"].ToString()) / float.Parse(water_price.Text)).ToString();
+                    //this.total_num_edc.Text = (float.Parse(kd["TotalMoney_EDC"].ToString()) / float.Parse(water_price.Text)).ToString();
 
-                this.CB_roomid.Text = kd["RoomID"].ToString();
-                this.cb_edc.Text = kd["Edc_waterID"].ToString();
+                    this.CB_roomid.Text = kd["RoomID"].ToString();
+                    this.cb_edc.Text = kd["Edc_waterID"].ToString();
+                }
+                showData_invoice();
+                _edc();
             }
-            showData_invoice();
-            _edc();
+            catch (Exception)
+            {
+                MessageBox.Show("Not Found " + TB_filterSearch.Text, "Not found");
+            }
             cnn.Close();
         }
 
@@ -254,12 +260,12 @@ namespace moneyhome
         private void btn_print_Click(object sender, EventArgs e)
         {
             var _trashExpense = (float.Parse(LB_is_trash.Text) * float.Parse(trash_price.Text)).ToString();
-            var _spaceExpense = (float.Parse(LB_is_space.Text)*float.Parse(space_price.Text)).ToString();
+            var _spaceExpense = (float.Parse(LB_is_space.Text) * float.Parse(space_price.Text)).ToString();
             ViewInvoice viewInvoice = new ViewInvoice(
-                LB_invoiceID.Text,Lb_userID.Text,
-                water_price.Text,total_num_water.Text,
-                edc_price.Text,total_num_edc.Text,
-                _trashExpense,_spaceExpense,room_price.Text
+                LB_invoiceID.Text, Lb_userID.Text,
+                water_price.Text, total_num_water.Text,
+                edc_price.Text, total_num_edc.Text,
+                _trashExpense, _spaceExpense, room_price.Text
                 );
             viewInvoice.Show();
         }
@@ -285,11 +291,11 @@ namespace moneyhome
         }
         private void _checkTextNullInTexboxt()
         {
-            if (((CB_roomid.Text).Length == 0 || 
-                (water_price.Text).Length ==0))
+            if (((CB_roomid.Text).Length == 0 ||
+                (water_price.Text).Length == 0))
             {
                 btn_insert.BackColor = Color.DarkGray;
-                btn_insert.Enabled = false;   
+                btn_insert.Enabled = false;
             }
             else
             {
@@ -353,6 +359,9 @@ namespace moneyhome
                 btn_update.BackColor = Color.SteelBlue;
                 btn_update.Enabled = true;
 
+                btn_print.BackColor = Color.SteelBlue;
+                btn_print.Enabled = true;
+
                 btn_insert.BackColor = Color.DarkGray;
                 btn_insert.Enabled = false;
             }
@@ -360,6 +369,9 @@ namespace moneyhome
             {
                 btn_update.BackColor = Color.DarkGray;
                 btn_update.Enabled = false;
+
+                btn_print.BackColor = Color.DarkGray;
+                btn_print.Enabled = false;
 
                 btn_insert.BackColor = Color.SteelBlue;
                 btn_insert.Enabled = true;
