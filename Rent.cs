@@ -304,9 +304,11 @@ namespace moneyhome
         private void btn_clear_Click(object sender, EventArgs e)
         {
             RentID.Text = "";
+            CB_roomID.Items.Clear();
             CB_roomID.Text = "";
-            roomPrice.Text = "";
             list.Items.Clear();
+            list.Text = "";
+            roomPrice.Text = "";
             check_trash.Checked = false;
             check_vehicle.Checked = false;
             label_member.Text = "";

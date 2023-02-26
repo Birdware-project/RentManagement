@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.IO;
+using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Windows.Forms;
 
 namespace moneyhome
 {
@@ -22,10 +17,10 @@ namespace moneyhome
         DataTable dt;
 
         private string _userID;
-        public Customer(string connection,string Id)
+        public Customer(string connection, string Id)
         {
             _userID = Id;
-            connectionString= connection;
+            connectionString = connection;
             InitializeComponent();
             Lb_userID.Text = Id;
             showData_customer();
@@ -64,10 +59,10 @@ namespace moneyhome
                 ms.Read(photo_aray, 0, photo_aray.Length);
                 myhome.Parameters.AddWithValue("@picture", photo_aray);
             }
-            myhome.Parameters.Add("@name", SqlDbType.VarChar,250).Value = this.name_cus.Text;
+            myhome.Parameters.Add("@name", SqlDbType.VarChar, 250).Value = this.name_cus.Text;
             myhome.Parameters.Add("@sex", SqlDbType.VarChar, 250).Value = this.CB_sex.Text;
             myhome.Parameters.Add("@age", SqlDbType.VarChar, 250).Value = this.age_cus.Text;
-            myhome.Parameters.Add("@phone", SqlDbType.VarChar,250).Value = this.phone_cus.Text;
+            myhome.Parameters.Add("@phone", SqlDbType.VarChar, 250).Value = this.phone_cus.Text;
             myhome.Connection = cnn;
             cnn.Open();
             int aff = myhome.ExecuteNonQuery();
@@ -79,7 +74,7 @@ namespace moneyhome
             CB_sex.Text = "";
             phone_cus.Text = "";
             pictureBox1.Image = null;
-           
+
         }
         private void showData_customer()
         {
@@ -113,24 +108,24 @@ namespace moneyhome
 
             cnn.Open();
             SqlDataReader kd;
-
-            
-                kd = myhome.ExecuteReader();
-                while (kd.Read())
-                {
-                    this.LB_customer.Text = kd["ID"].ToString();
-                    this.name_cus.Text = kd["Name"].ToString();
-                    this.CB_sex.Text = kd["Sex"].ToString();
-                    this.age_cus.Text = kd["Age"].ToString();
-                    this.phone_cus.Text = kd["Phone"].ToString();
-
+            kd = myhome.ExecuteReader();
+            while (kd.Read())
+            {
+                this.LB_customer.Text = kd["ID"].ToString();
+                this.name_cus.Text = kd["Name"].ToString();
+                this.CB_sex.Text = kd["Sex"].ToString();
+                this.age_cus.Text = kd["Age"].ToString();
+                this.phone_cus.Text = kd["Phone"].ToString();
+                if (!string.IsNullOrEmpty(kd["image"].ToString())){
                     byte[] photo_aray = (byte[])kd["image"];
                     MemoryStream ms = new MemoryStream(photo_aray);
                     pictureBox1.Image = Image.FromStream(ms);
-                }
-                showData_customer();
-           
-                cnn.Close();
+                } 
+
+            }
+            showData_customer();
+
+            cnn.Close();
         }
 
         private void bt_update_Click(object sender, EventArgs e)
@@ -150,10 +145,10 @@ namespace moneyhome
                 myhome.Parameters.AddWithValue("@picture1", photo_aray);
             }
             myhome.Parameters.Add("@id", SqlDbType.Int).Value = this.LB_customer.Text;
-            myhome.Parameters.Add("@name", SqlDbType.VarChar,250).Value = this.name_cus.Text;
+            myhome.Parameters.Add("@name", SqlDbType.VarChar, 250).Value = this.name_cus.Text;
             myhome.Parameters.Add("@sex", SqlDbType.VarChar, 250).Value = this.CB_sex.Text;
             myhome.Parameters.Add("@age", SqlDbType.VarChar, 250).Value = this.age_cus.Text;
-            myhome.Parameters.Add("@phone", SqlDbType.VarChar,250).Value = this.phone_cus.Text;
+            myhome.Parameters.Add("@phone", SqlDbType.VarChar, 250).Value = this.phone_cus.Text;
             cnn.Open();
             myhome.Connection = cnn;
             myhome.ExecuteNonQuery();

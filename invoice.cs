@@ -26,6 +26,8 @@ namespace moneyhome
             showData_invoice();
             _ListRoomId();
             _ListEDC();
+
+            _checkUpdate_InvoiceIDNull();
             _checkTextNullInTexboxt();
 
         }
@@ -51,18 +53,26 @@ namespace moneyhome
         }
         private void _ListEDC()
         {
-            cnn = new SqlConnection(connectionString);
-            myhome = new SqlCommand();
-            myhome.CommandText = "select ID from edc_water";
-            myhome.Connection = cnn;
-            cnn.Open();
-            SqlDataReader kd;
-
-            kd = myhome.ExecuteReader();
-            while (kd.Read())
+            if (string.IsNullOrEmpty(CB_roomid.Text))
             {
-                this.cb_edc.Items.Add(kd["ID"].ToString());
+                cb_edc.Enabled = false;
             }
+            else
+            {
+                cb_edc.Enabled = true;
+                cnn = new SqlConnection(connectionString);
+                myhome = new SqlCommand();
+                myhome.CommandText = "select ID from edc_water where roomid = " + CB_roomid.Text;
+                myhome.Connection = cnn;
+                cnn.Open();
+                SqlDataReader kd;
+                kd = myhome.ExecuteReader();
+                while (kd.Read())
+                {
+                    this.cb_edc.Items.Add(kd["ID"].ToString());
+                }
+            }
+            
         }
         private void showData_invoice()
         {
@@ -75,6 +85,30 @@ namespace moneyhome
 
         }
 
+        private void CB_roomid_SelectedValueChanged(object sender, EventArgs e)
+        {
+            _RoomMoneyAndEdcwater();
+        }
+        private void _RoomMoneyAndEdcwater()
+        {
+            _ListEDC();
+            cnn = new SqlConnection(connectionString);
+            myhome = new SqlCommand();
+            myhome.CommandText = "select * from Rent a join Room b on a.roomid = b.id where a.ID=@ID";
+            myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.CB_roomid.Text;
+            myhome.Connection = cnn;
+            cnn.Open();
+            SqlDataReader kd;
+
+            kd = myhome.ExecuteReader();
+            while (kd.Read())
+            {
+                this.room_price.Text = (kd["Price"].ToString());
+                this.LB_is_trash.Text = (kd["isTrash"].ToString());
+                this.LB_is_space.Text = (kd["isSpace"].ToString());
+            }
+
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             cnn = new SqlConnection(connectionString);
@@ -114,30 +148,6 @@ namespace moneyhome
             cb_edc.Text = "";
             trash_price.Text = "";
             water_price.Text = "";
-
-        }
-
-        private void CB_roomid_SelectedValueChanged(object sender, EventArgs e)
-        {
-            _RoomMoney();
-        }
-        private void _RoomMoney()
-        {
-            cnn = new SqlConnection(connectionString);
-            myhome = new SqlCommand();
-            myhome.CommandText = "select * from Rent a join Room b on a.roomid = b.id where a.ID=@ID";
-            myhome.Parameters.Add("@ID", SqlDbType.Int).Value = this.CB_roomid.Text;
-            myhome.Connection = cnn;
-            cnn.Open();
-            SqlDataReader kd;
-
-            kd = myhome.ExecuteReader();
-            while (kd.Read())
-            {
-                this.room_price.Text = (kd["Price"].ToString());
-                this.LB_is_trash.Text = (kd["isTrash"].ToString());
-                this.LB_is_space.Text = (kd["isSpace"].ToString());
-            }
 
         }
         private void _edc()
@@ -257,7 +267,10 @@ namespace moneyhome
         private void button5_Click(object sender, EventArgs e)
         {
             LB_invoiceID.Text = "";
+            CB_roomid.Items.Clear();
             CB_roomid.Text = "";
+            cb_edc.Items.Clear();
+            cb_edc.Text = "";
             edc_price.Text = "";
             space_price.Text = "";
             date_time.Text = DateTime.Now.ToString();
@@ -266,25 +279,25 @@ namespace moneyhome
             total_num_edc.Text = "";
             LB_is_space.Text = "";
             LB_is_trash.Text = "";
-            cb_edc.Text = "";
             trash_price.Text = "";
             water_price.Text = "";
 
         }
         private void _checkTextNullInTexboxt()
         {
-            if ((CB_roomid.Text).Length == 0 || 
-                (water_price.Text).Length ==0)
+            if (((CB_roomid.Text).Length == 0 || 
+                (water_price.Text).Length ==0))
             {
                 btn_insert.BackColor = Color.DarkGray;
-                btn_insert.Enabled= false;
-                
-                btn_update.Enabled= false;
-                btn_update.BackColor = Color.DarkGray;
+                btn_insert.Enabled = false;   
             }
             else
             {
-                btn_insert.Enabled= true;
+                if (string.IsNullOrEmpty(LB_invoiceID.Text))
+                {
+                    btn_insert.BackColor = Color.SteelBlue;
+                    btn_insert.Enabled = true;
+                }
             }
         }
 
@@ -332,6 +345,29 @@ namespace moneyhome
                     }
                 }
             }
+        }
+        private void _checkUpdate_InvoiceIDNull()
+        {
+            if (!string.IsNullOrEmpty(LB_invoiceID.Text))
+            {
+                btn_update.BackColor = Color.SteelBlue;
+                btn_update.Enabled = true;
+
+                btn_insert.BackColor = Color.DarkGray;
+                btn_insert.Enabled = false;
+            }
+            else
+            {
+                btn_update.BackColor = Color.DarkGray;
+                btn_update.Enabled = false;
+
+                btn_insert.BackColor = Color.SteelBlue;
+                btn_insert.Enabled = true;
+            }
+        }
+        private void LB_invoiceID_TextChanged(object sender, EventArgs e)
+        {
+            _checkUpdate_InvoiceIDNull();
         }
     }
 }

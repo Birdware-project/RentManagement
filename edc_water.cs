@@ -157,9 +157,10 @@ namespace moneyhome
             DateTime _thisDate = this.date_time.Value;
             cnn = new SqlConnection(connectionString);
             myhome = new SqlCommand();
-            myhome.CommandText = "select * from edc_water where date < @date1 and date > @date2 ";
-            myhome.Parameters.Add("@date1", SqlDbType.Date).Value = new DateTime(_thisDate.Year,_thisDate.Month,1);
+            myhome.CommandText = "select * from edc_water where Date < @date1 and date >= @date2 and roomid = @roomid ";
+            myhome.Parameters.Add("@date1", SqlDbType.Date).Value = new DateTime(_thisDate.Year, _thisDate.Month, 1);
             myhome.Parameters.Add("@date2", SqlDbType.Date).Value = new DateTime(_thisDate.Year, _thisDate.Month, 1).AddMonths(-1);
+            myhome.Parameters.Add("@roomid", SqlDbType.Int).Value = CB_roomID.Text;
             myhome.Connection = cnn;
             cnn.Open();
             SqlDataReader kd;

@@ -451,9 +451,9 @@
             this.LB_invoiceID.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_invoiceID.Location = new System.Drawing.Point(229, 8);
             this.LB_invoiceID.Name = "LB_invoiceID";
-            this.LB_invoiceID.Size = new System.Drawing.Size(59, 36);
+            this.LB_invoiceID.Size = new System.Drawing.Size(0, 36);
             this.LB_invoiceID.TabIndex = 54;
-            this.LB_invoiceID.Text = "____";
+            this.LB_invoiceID.TextChanged += new System.EventHandler(this.LB_invoiceID_TextChanged);
             // 
             // Lb_userID
             // 

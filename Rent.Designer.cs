@@ -261,6 +261,7 @@
             // filter_cus
             // 
             this.filter_cus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.filter_cus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.filter_cus.Location = new System.Drawing.Point(339, 58);
             this.filter_cus.Multiline = true;
             this.filter_cus.Name = "filter_cus";
@@ -282,6 +283,8 @@
             // add_list
             // 
             this.add_list.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.add_list.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.add_list.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.add_list.Location = new System.Drawing.Point(131, 37);
             this.add_list.Multiline = true;
             this.add_list.Name = "add_list";
