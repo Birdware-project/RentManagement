@@ -174,20 +174,7 @@ namespace moneyhome
             myhome.ExecuteNonQuery();
             cnn.Close();
             showData_invoice();
-            LB_invoiceID.Text = "";
-            Lb_userID.Text = "";
-            CB_roomid.Text = "";
-            edc_price.Text = "";
-            space_price.Text = "";
-            date_time.Text = "";
-            room_price.Text = "";
-            total_num_water.Text = "";
-            total_num_edc.Text = "";
-            LB_is_space.Text = "";
-            LB_is_trash.Text = "";
-            cb_edc.Text = "";
-            trash_price.Text = "";
-            water_price.Text = "";
+            _clear();
 
         }
         private void _edc()
@@ -287,19 +274,7 @@ namespace moneyhome
             cnn.Close();
             MessageBox.Show("Date Update Success!");
             showData_invoice();
-            LB_invoiceID.Text = "";
-            CB_roomid.Text = "";
-            edc_price.Text = "";
-            space_price.Text = "";
-            date_time.Text = "";
-            room_price.Text = "";
-            total_num_water.Text = "";
-            total_num_edc.Text = "";
-            LB_is_space.Text = "";
-            LB_is_trash.Text = "";
-            cb_edc.Text = "";
-            trash_price.Text = "";
-            water_price.Text = "";
+            _clear();
         }
 
         private void bt_total_Click(object sender, EventArgs e)
@@ -322,7 +297,6 @@ namespace moneyhome
         private void _clear()
         {
             LB_invoiceID.Text = "";
-            CB_roomid.Items.Clear();
             CB_roomid.Text = "";
             cb_edc.Items.Clear();
             cb_edc.Text = "";
@@ -432,6 +406,21 @@ namespace moneyhome
         private void LB_invoiceID_TextChanged(object sender, EventArgs e)
         {
             _checkUpdate_InvoiceIDNull();
+        }
+
+        private void _filterAction()
+        {
+            cnn = cnn = new SqlConnection(connectionString);
+            adapter = new SqlDataAdapter("select * from invoice where '"+ dateTimePicker1.Value.ToString("yyyy-MM-dd") +
+                "' <= date and date < '"+dateTimePicker2.Value.ToString("yyyy-MM-dd")+"'", cnn);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;
+            dataGridView1.Sort(dataGridView1.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+        }
+        private void btn_filter_Click(object sender, EventArgs e)
+        {
+            _filterAction();
         }
     }
 }

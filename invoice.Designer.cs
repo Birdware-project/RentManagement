@@ -62,15 +62,21 @@
             this.LB_invoiceID = new System.Windows.Forms.Label();
             this.Lb_userID = new System.Windows.Forms.Label();
             this.TB_filterSearch = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_filter = new System.Windows.Forms.Button();
             this.btn_print = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btn_excel = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -137,11 +143,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 457);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 496);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(965, 225);
+            this.dataGridView1.Size = new System.Drawing.Size(965, 186);
             this.dataGridView1.TabIndex = 23;
             // 
             // button2
@@ -150,7 +156,7 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(871, 401);
+            this.button2.Location = new System.Drawing.Point(871, 450);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 37);
             this.button2.TabIndex = 24;
@@ -164,7 +170,7 @@
             this.bt_search.BackColor = System.Drawing.Color.SteelBlue;
             this.bt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_search.ForeColor = System.Drawing.Color.White;
-            this.bt_search.Location = new System.Drawing.Point(613, 363);
+            this.bt_search.Location = new System.Drawing.Point(106, 453);
             this.bt_search.Name = "bt_search";
             this.bt_search.Size = new System.Drawing.Size(107, 37);
             this.bt_search.TabIndex = 26;
@@ -295,7 +301,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(710, 137);
+            this.label10.Location = new System.Drawing.Point(708, 108);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(156, 36);
             this.label10.TabIndex = 31;
@@ -319,7 +325,7 @@
             this.room_price.AutoSize = true;
             this.room_price.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.room_price.ForeColor = System.Drawing.Color.Black;
-            this.room_price.Location = new System.Drawing.Point(886, 137);
+            this.room_price.Location = new System.Drawing.Point(884, 108);
             this.room_price.Name = "room_price";
             this.room_price.Size = new System.Drawing.Size(26, 36);
             this.room_price.TabIndex = 34;
@@ -354,7 +360,7 @@
             this.total_num_edc.AutoSize = true;
             this.total_num_edc.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total_num_edc.ForeColor = System.Drawing.Color.Black;
-            this.total_num_edc.Location = new System.Drawing.Point(886, 173);
+            this.total_num_edc.Location = new System.Drawing.Point(884, 144);
             this.total_num_edc.Name = "total_num_edc";
             this.total_num_edc.Size = new System.Drawing.Size(26, 36);
             this.total_num_edc.TabIndex = 38;
@@ -366,7 +372,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(657, 173);
+            this.label13.Location = new System.Drawing.Point(655, 144);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(216, 36);
             this.label13.TabIndex = 37;
@@ -378,7 +384,7 @@
             this.total_num_water.AutoSize = true;
             this.total_num_water.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total_num_water.ForeColor = System.Drawing.Color.Black;
-            this.total_num_water.Location = new System.Drawing.Point(886, 209);
+            this.total_num_water.Location = new System.Drawing.Point(884, 180);
             this.total_num_water.Name = "total_num_water";
             this.total_num_water.Size = new System.Drawing.Size(26, 36);
             this.total_num_water.TabIndex = 40;
@@ -390,7 +396,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(641, 207);
+            this.label15.Location = new System.Drawing.Point(639, 178);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(232, 36);
             this.label15.TabIndex = 39;
@@ -402,7 +408,7 @@
             this.LB_is_space.AutoSize = true;
             this.LB_is_space.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_is_space.ForeColor = System.Drawing.Color.Black;
-            this.LB_is_space.Location = new System.Drawing.Point(886, 246);
+            this.LB_is_space.Location = new System.Drawing.Point(884, 217);
             this.LB_is_space.Name = "LB_is_space";
             this.LB_is_space.Size = new System.Drawing.Size(26, 36);
             this.LB_is_space.TabIndex = 46;
@@ -414,7 +420,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(710, 246);
+            this.label16.Location = new System.Drawing.Point(708, 217);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(163, 36);
             this.label16.TabIndex = 45;
@@ -426,7 +432,7 @@
             this.LB_is_trash.AutoSize = true;
             this.LB_is_trash.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_is_trash.ForeColor = System.Drawing.Color.Black;
-            this.LB_is_trash.Location = new System.Drawing.Point(886, 282);
+            this.LB_is_trash.Location = new System.Drawing.Point(884, 253);
             this.LB_is_trash.Name = "LB_is_trash";
             this.LB_is_trash.Size = new System.Drawing.Size(26, 36);
             this.LB_is_trash.TabIndex = 48;
@@ -438,7 +444,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(710, 282);
+            this.label19.Location = new System.Drawing.Point(708, 253);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(163, 36);
             this.label19.TabIndex = 47;
@@ -470,24 +476,25 @@
             // 
             this.TB_filterSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TB_filterSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_filterSearch.Location = new System.Drawing.Point(500, 406);
+            this.TB_filterSearch.Location = new System.Drawing.Point(219, 455);
             this.TB_filterSearch.Multiline = true;
             this.TB_filterSearch.Name = "TB_filterSearch";
-            this.TB_filterSearch.Size = new System.Drawing.Size(333, 32);
+            this.TB_filterSearch.Size = new System.Drawing.Size(149, 32);
             this.TB_filterSearch.TabIndex = 56;
             // 
-            // button1
+            // btn_filter
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(500, 363);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 37);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "Filter";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_filter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_filter.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_filter.ForeColor = System.Drawing.Color.White;
+            this.btn_filter.Location = new System.Drawing.Point(32, 72);
+            this.btn_filter.Name = "btn_filter";
+            this.btn_filter.Size = new System.Drawing.Size(107, 37);
+            this.btn_filter.TabIndex = 57;
+            this.btn_filter.Text = "Filter";
+            this.btn_filter.UseVisualStyleBackColor = false;
+            this.btn_filter.Click += new System.EventHandler(this.btn_filter_Click);
             // 
             // btn_print
             // 
@@ -563,7 +570,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("KhmerDLStation TNRB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(607, 69);
+            this.label12.Location = new System.Drawing.Point(626, 56);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(136, 36);
             this.label12.TabIndex = 61;
@@ -575,13 +582,63 @@
             this.btn_excel.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_excel.ForeColor = System.Drawing.Color.White;
-            this.btn_excel.Location = new System.Drawing.Point(726, 363);
+            this.btn_excel.Location = new System.Drawing.Point(145, 72);
             this.btn_excel.Name = "btn_excel";
             this.btn_excel.Size = new System.Drawing.Size(107, 37);
             this.btn_excel.TabIndex = 62;
             this.btn_excel.Text = "Excel";
             this.btn_excel.UseVisualStyleBackColor = false;
             this.btn_excel.Click += new System.EventHandler(this.btn_excel_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(64, 14);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 63;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(64, 44);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker2.TabIndex = 64;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.btn_excel);
+            this.panel2.Controls.Add(this.btn_filter);
+            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.dateTimePicker2);
+            this.panel2.Location = new System.Drawing.Point(542, 320);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(283, 118);
+            this.panel2.TabIndex = 65;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(6, 14);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(48, 20);
+            this.label14.TabIndex = 65;
+            this.label14.Text = "From";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(6, 46);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(28, 20);
+            this.label17.TabIndex = 66;
+            this.label17.Text = "To";
             // 
             // invoice
             // 
@@ -590,11 +647,10 @@
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(982, 694);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_excel);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.TB_filterSearch);
             this.Controls.Add(this.Lb_userID);
             this.Controls.Add(this.LB_is_trash);
@@ -617,6 +673,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -658,12 +716,17 @@
         private System.Windows.Forms.Label LB_invoiceID;
         private System.Windows.Forms.Label Lb_userID;
         private System.Windows.Forms.TextBox TB_filterSearch;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_filter;
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btn_excel;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label14;
     }
 }
